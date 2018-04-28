@@ -1,0 +1,149 @@
+# depslib dependency file v1.0
+1524919813 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\main.cpp
+	<iostream>
+	<InstructionLine.h>
+	<OperationTable.h>
+	<Controller.h>
+	<iostream>
+	<map>
+	<algorithm>
+
+1524948381 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\instructionline.h
+	<string>
+
+1524843244 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\asciicode.cpp
+	"AsciiCode.h"
+
+1524841559 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\asciicode.h
+
+1524841132 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\converters.cpp
+	"Converters.h"
+	<iostream>
+	<string.h>
+	<sstream>
+	<iomanip>
+
+1524841654 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\converters.h
+	<iostream>
+
+1524947850 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\directivetable.cpp
+	"DirectiveTable.h"
+	<iostream>
+	<algorithm>
+
+1524920092 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\directivetable.h
+	<vector>
+	<string>
+	<algorithm>
+
+1524841164 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\grouptable.cpp
+	"GroupTable.h"
+	<algorithm>
+	<iostream>
+	<map>
+
+1524841734 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\grouptable.h
+	<algorithm>
+	<iostream>
+	<map>
+
+1524948340 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\inoutfile.cpp
+	"inOutFile.h"
+	<iostream>
+	"fstream"
+	<vector>
+
+1524844973 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\inoutfile.h
+	<vector>
+	<iostream>
+
+1524948349 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\instructionline.cpp
+	"InstructionLine.h"
+	<regex>
+
+1524947911 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\littable.cpp
+	"LitTable.h"
+	<iostream>
+	<map>
+	<unordered_map>
+	<algorithm>
+	<bitset>
+
+1524948189 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\littable.h
+	<iostream>
+	<map>
+	<algorithm>
+	<unordered_map>
+
+1524948771 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
+	"OperandValidator.h"
+	<string>
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<string>
+	<regex>
+
+1524956019 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandvalidator.h
+	<string>
+	<string>
+
+1524948038 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operationtable.cpp
+	<iostream>
+	<OperationTable.h>
+	<iostream>
+	<map>
+	<algorithm>
+
+1524920063 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationtable.h
+	"OperationInfomation.h"
+	<string>
+	<map>
+
+1524847374 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationinfomation.h
+	<vector>
+
+1524948059 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\symboltable.cpp
+	"SymbolTable.h"
+	<iostream>
+	<map>
+	<algorithm>
+
+1524925065 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\symboltable.h
+	<algorithm>
+	<iostream>
+	<map>
+
+1524955597 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\controller.h
+	<vector>
+	<inOutFile.h>
+	<LitTable.h>
+
+1524955953 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\controller.cpp
+	"Controller.h"
+	<iostream>
+	<inOutFile.h>
+	<InstructionLine.h>
+	<OperationTable.h>
+	<DirectiveTable.h>
+	<vector>
+	<OperandValidator.h>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+
+1524948837 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandsizevalidator.cpp
+	"OperandSizeValidator.h"
+	<iostream>
+	<vector>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+
+1524948559 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandsizevalidator.h
+	<string>
+

@@ -1,0 +1,3 @@
+prop1  start 1000
+alpha  resw   3
+        end prop1
