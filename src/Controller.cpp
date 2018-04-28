@@ -1,7 +1,8 @@
-#include "Controller.h"
+#include <Controller.h>
 #include <iostream>
 #include <inOutFile.h>
 #include <InstructionLine.h>
+#include <OperationTable.h>
 #include <OperationTable.h>
 #include <DirectiveTable.h>
 #include <vector>
@@ -30,7 +31,7 @@ void Controller :: start()
     inOutFile file = inOutFile();
     std::vector<std::string> input = file.readFile("Reader.txt");
     std::vector<std::string> intermediateFile;
-    OperandValidator opValid;
+    OperandValidator opValid = OperandValidator();
     DirectiveTable dirs;
     dirs.getInstance();
     OperationTable opTable;
@@ -47,6 +48,7 @@ void Controller :: start()
     string operation = instruction.getOperation();
     string line = instruction.getLine();
     int type = instruction.getType();
+    int format = instruction.getInstructionFormatType();
     bool startFlag = false;
     if(operation == "start"){
         locctr = atoi(operand.c_str());
@@ -65,6 +67,7 @@ void Controller :: start()
         operation = ins.getOperation();
         line = ins.getLine();
         type = ins.getType();
+        format = ins.getInstructionFormatType();
     }
     toUpper(&operation);
 
@@ -102,7 +105,12 @@ void Controller :: start()
                 if(operation == "LDB" && baseFound){
                     endBaseFound = true;
                 }
-                //inc locctr
+                if(format == 4){
+                    locctr += 4;
+                } else{
+                    format = opTable.getFormat(operation);
+                    locctr += format;
+                }
             } else if (!dirs.contains(operation)) {
                 errorMessage = "Opcode doesn't exist";
             }

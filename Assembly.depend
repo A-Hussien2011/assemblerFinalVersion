@@ -75,8 +75,8 @@
 	<algorithm>
 	<unordered_map>
 
-1524948771 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
-	"OperandValidator.h"
+1524958261 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
+	<OperandValidator.h>
 	<string>
 	<iostream>
 	<stdio.h>
@@ -84,23 +84,20 @@
 	<string>
 	<regex>
 
-1524956019 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandvalidator.h
+1524957706 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandvalidator.h
 	<string>
 	<string>
 
-1524948038 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operationtable.cpp
+1524958771 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operationtable.cpp
 	<iostream>
-	<OperationTable.h>
-	<iostream>
-	<map>
-	<algorithm>
+	"OperationTable.h"
 
-1524920063 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationtable.h
+1524958957 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationtable.h
 	"OperationInfomation.h"
 	<string>
 	<map>
 
-1524847374 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationinfomation.h
+1524958808 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationinfomation.h
 	<vector>
 
 1524948059 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\symboltable.cpp
@@ -119,11 +116,12 @@
 	<inOutFile.h>
 	<LitTable.h>
 
-1524955953 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\controller.cpp
-	"Controller.h"
+1524958274 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\controller.cpp
+	<Controller.h>
 	<iostream>
 	<inOutFile.h>
 	<InstructionLine.h>
+	<OperationTable.h>
 	<OperationTable.h>
 	<DirectiveTable.h>
 	<vector>

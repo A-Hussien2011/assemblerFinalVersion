@@ -23,6 +23,7 @@ public :
     static const int TYPE_LOCCTR = 13;//R
     static const int TYPE_EXPRESSION = 14;//R
 
+    OperandValidator();
     int getOperandType(string);
     bool isCompatible(int, string, string);
     bool isRelative(int);

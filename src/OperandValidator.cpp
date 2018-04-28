@@ -1,4 +1,4 @@
-#include "OperandValidator.h"
+#include <OperandValidator.h>
 #include <string>
 #include <iostream>
 #include <stdio.h>
@@ -8,6 +8,8 @@
 
 using namespace std;
 
+OperandValidator::OperandValidator(){
+}
 int OperandValidator::getOperandType(string operand) {
     using namespace std::regex_constants;
     regex operandTypeRegex(REGEX_IMMEDITAE_WORD);

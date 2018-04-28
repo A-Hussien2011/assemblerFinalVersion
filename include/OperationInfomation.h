@@ -21,6 +21,7 @@ public:
      * The supported formats of the instruction. 1 ,2,3,4
      */
     std::vector<int> supportedFormats;
+    int tybe;
 
 };
 

@@ -4,8 +4,6 @@
 #include "OperationInfomation.h"
 #include <string>
 #include <map>
-using namespace std;
-
 class OperationTable{
 public:
     static OperationTable *getInstance();
@@ -20,13 +18,14 @@ public:
     ha5od el operation upper case :D --------------->
     */
     OperationInformation getInfo(std::string operation);
+    int getFormat(std::string operation);
     void test();
     OperationTable();
 private:
-    void toUpper(string*);
     /**
     private constractor to intialize  singleton.
     **/
+
 
     /**
     private object to constract static table.

@@ -5,20 +5,12 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
+#include <OperandValidator.h>
 using namespace std;
 
 
 
 int main() {
-    /*OperationTable  *d;
-    OperationTable::getInstance()->test();
-     bool ss = OperationTable::getInstance()->contains("ADD");
-     //cout << ss;
-     ss = OperationTable::getInstance()->contains("ADffD");
-     //cout << ss;
-     cout << OperationTable::getInstance()->getInfo("ADD").label;
-     cout <<  OperationTable::getInstance()->getInfo("MUL").opCode<< std::endl;
-     cout <<  OperationTable::getInstance()->getInfo("ADD").supportedFormats[0];*/
 
     InstructionLine instructionLine = InstructionLine(
             "                 lda   3  ");
@@ -37,7 +29,11 @@ int main() {
 
 
     Controller controller;
-   controller.start();
+   //controller.start();
+   //OperandValidator op = OperandValidator();
+   OperationTable x;
+   x.getInstance();
+   cout << x.getFormat("+LDA");
 
 
 
