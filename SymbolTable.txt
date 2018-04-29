@@ -1,0 +1,4 @@
+ SYMBOL TABLE
+Name      Address   
+ALPHA     0009      
+PJ        0009      

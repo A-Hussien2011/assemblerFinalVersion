@@ -1,3 +1,9 @@
-prop1  start 1000
-     +lda    4
-       end    prop1
+.123456789
+prog	start	00
+	lda	=c'eof'
+	ldt	=w'12'
+	lda	x'05'
+pj	word	5
+	org	pj
+alpha	byte	c'gt'
+	end

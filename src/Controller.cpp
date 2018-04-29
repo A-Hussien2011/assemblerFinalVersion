@@ -26,7 +26,7 @@ void Controller :: start()
     std::vector<std::string> errorMessageArr;
     std::vector<int> locctrArr;
 
-    int locctr;
+    int locctr = 0;
     LitTable litTab = LitTable();
     inOutFile file = inOutFile();
     std::vector<std::string> input = file.readFile("Reader.txt");
@@ -59,6 +59,20 @@ void Controller :: start()
         errorMessage=error;
     }
     ///add while comment
+    while(type == TYPE_COMMENT_ONLY){
+        intermediateFile.push_back(line);
+        errorMessageArr.push_back(errorMessage);
+        locctrArr.push_back(locctr);
+        fileIterator++;
+        InstructionLine instructionComment = InstructionLine(input[fileIterator]);
+        label = instructionComment.getLabel();
+        operand = instructionComment.getOperand();
+        operation = instructionComment.getOperation();
+        line = instructionComment.getLine();
+        error = instructionComment.getError();
+        type = instructionComment.getType();
+        format = instructionComment.getInstructionFormatType();
+    }
     if(operation == "START"){
         locctr = atoi(operand.c_str());
         startingAdrr = locctr;
