@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include <map>
-
+#include "inOutFile.h"
 
 using namespace std;
 
@@ -24,8 +24,10 @@ class SymbolTable
         int getSymbolAddress(string*);
         bool getSymbolType(string*);
         int getSymbolLength(string*);
+        void printSymbolTable();
 
     private:
+        inOutFile file;
         int symbolLength(string);
         void toUpper(string*);
         //info about the symbol

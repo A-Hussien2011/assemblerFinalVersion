@@ -117,6 +117,8 @@ bool OperandValidator::isCompatible(int operandType, string opCode, string opera
         return false;
     } else if (opCode == "ORG" && (operandType != 4 && operandType != 11)) {
         return false;
+    }else if (opCode == "ORG" && (operandType == 11 &&!isNumberPositive(operand))) {
+        return false;
     } else if (opCode == "EQU" &&
                ((operandType > 4 && operandType < 11)
                   || operandType == 12 || operandType == 13)) {

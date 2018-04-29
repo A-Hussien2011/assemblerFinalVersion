@@ -2,7 +2,9 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
-
+#include<vector>
+#include "Converters.h"
+#include "inOutFile.h"
 using namespace std;
 
     SymbolTable::SymbolTable(){
@@ -62,4 +64,22 @@ using namespace std;
         transform(symbolName->begin(), symbolName->end(), symbolName->begin(), ::toupper);
     }
 
+    void SymbolTable::printSymbolTable() {
+        Converters convert;
+        map<string, int> temp;
+        std::vector<std::string> symbolAddressVec;
+        std::vector<std::string> symbolLabelVec;
 
+        for(auto elem : symbol_table) {
+            temp[elem.first] = elem.second.address;
+        }
+
+        for(auto elem : temp) {
+            symbolLabelVec.push_back(elem.first);
+            string hexAddress = convert.convertToHexa(elem.second);
+            symbolAddressVec.push_back(hexAddress);
+        }
+
+        file = inOutFile();
+        file.writeSymbolFile(symbolLabelVec, symbolAddressVec, "SymbolTable.txt");
+    }

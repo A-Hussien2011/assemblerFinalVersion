@@ -58,7 +58,7 @@ void Controller :: start()
     } else {
         errorMessage=error;
     }
-
+    ///add while comment
     if(operation == "START"){
         locctr = atoi(operand.c_str());
         startingAdrr = locctr;
@@ -185,8 +185,11 @@ void Controller :: start()
                 if (operandType == TYPE_SYMBOL_OPERAND
                     && !symTab.containSymbol(&operand)) {
                         errorMessage = "error in operand";
-                } else {
+                } else if (operandType == TYPE_SYMBOL_OPERAND
+                    && symTab.containSymbol(&operand)){
                     locctr = symTab.getSymbolAddress(&operand);
+                } else if (operandType == TYPE_WORD_OPERAND) {
+                    locctr = atoi(operand.c_str());
                 }
             } else if (operation == "EQU") {
                 if ((operandType == TYPE_IMMEDITAE_SYMBOL
@@ -263,6 +266,7 @@ void Controller :: start()
     */
     //cout<<locctr - startingAdrr << endl;
     file.writeFile(intermediateFile, errorMessageArr, locctrArr, "trial.txt");
+    symTab.printSymbolTable();
 
 }
 

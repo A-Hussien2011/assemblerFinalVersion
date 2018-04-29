@@ -15,6 +15,7 @@ class inOutFile {
 public:
     static vector<string> readFile(string);
     void static writeFile(vector<string>,vector<string>,vector<int>, string);
+    void static writeSymbolFile(vector<string>, vector<string>,string);
 
 };
 
