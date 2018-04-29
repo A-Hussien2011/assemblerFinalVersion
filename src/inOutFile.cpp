@@ -34,12 +34,26 @@ void inOutFile::writeFile(vector<string> fileContent, vector<string> errorMessag
     }
     out.close();
 }
-void inOutFile::writeSymbolFile(vector<string> label, vector<string> address, string fileName) {
-    std::size_t line_count = label.size();
+void inOutFile::writeSymbolFile(vector<string> name, vector<string> address, string fileName) {
+    std::size_t line_count = name.size();
     std::ofstream out(fileName);
     out << setw(10) << left << " SYMBOL TABLE" << setw(10) << left << endl;
+     out << setw(10) << left << "Name" << setw(10) << left << "Address"<<endl;
     for( std::size_t i = 0; i < line_count; ++i ) {
-        out << setw(10) << left << label[i] << setw(10) << left << address[i]<<endl;
+        out << setw(10) << left << name[i] << setw(10) << left << address[i]<<endl;
+    }
+    out.close();
+}
+void inOutFile::writeLitralFile(vector<string> name, vector<string> value,
+                                vector<int> length, vector<string> address, string fileName) {
+    std::size_t line_count = name.size();
+    std::ofstream out(fileName);
+    out << setw(10) << left << " LITERAL TABLE" << setw(10) << left << endl;
+     out << setw(10) << left << "Name" << setw(10) << left << "Value";
+    out << setw(10) << left << "Length" << setw(10) << left << "Address"<<endl;
+    for( std::size_t i = 0; i < line_count; ++i ) {
+        out << setw(10) << left << name[i] << setw(10) << left << value[i];
+        out << setw(10) << left << length[i] << setw(10) << left << address[i]<<endl;
     }
     out.close();
 }

@@ -4,6 +4,9 @@
 #include <unordered_map>
 #include <algorithm>
 #include <bitset>
+#include "Converters.h"
+#include "inOutFile.h"
+
 
 using namespace std;
 
@@ -11,7 +14,9 @@ using namespace std;
         literal_info litInfo;
         litInfo.address = -1;
         litInfo.value = litValue(litName, type);
+        cout<<"Value "<<litInfo.value<<endl;
         int literalLength = litLength(litName);
+        cout<<"Length "<<literalLength<<endl;
         litInfo.length = literalLength;
         literal_table[litName] = litInfo;
     }
@@ -19,11 +24,11 @@ using namespace std;
     int LitTable::assignAddress(int startAddress) {
         literal_table_iterator = literal_table.begin();
          for (literal_table_iterator; literal_table_iterator!=literal_table.end(); ++literal_table_iterator) {
-            if (literal_table_iterator->second.address != -1) {
+            if (literal_table_iterator->second.address == -1) {
                 string name = literal_table_iterator->first;
                 int incValue = getIncrValue(name);
-                startAddress += incValue;
                 literal_table_iterator->second.address = startAddress;
+                startAddress = startAddress + incValue;
             }
          }
          return startAddress;
@@ -38,13 +43,18 @@ using namespace std;
         string value;
         if (type == 6) {
             string str;
-            if (litName.at(2) == '-') {
+            if (litName.at(3) == '-') {
                 str = litName.append(litName, 3, litName.length() - 1);
                 int decimalValue = atoi(str.c_str()) + 1;
-                litName = convertToHexa(convertToBin(decimalValue));
+                value = convertToHexa(convertToBin(decimalValue));
+            } else {
+                string temp = litName.substr(3, litName.length() - 4);
+                 value = convert.convertToHexa(atoi(temp.c_str()));
             }
+        } else if (type == 5) {
+            value = litName.substr(3, litName.length() - 4);
         } else {
-            for (int i = 2; i < litName.length() - 1; i++) {
+            for (int i = 3; i < litName.length() - 1; i++) {
                 value.append(getAscii(litName.at(i)));
             }
         }
@@ -198,4 +208,24 @@ using namespace std;
         char* temp = &(s[0]);
         value = strtol(temp, NULL, 2);
         return value;
+    }
+
+    void LitTable::printLiteralTable() {
+
+        std::vector<std::string> nameV;
+        std::vector<std::string> valueV;
+        std::vector<int> lengthV;
+        std::vector<std::string> addressV;
+
+
+        for(auto elem : literal_table) {
+            nameV.push_back(elem.first);
+            valueV.push_back(elem.second.value);
+            lengthV.push_back(elem.second.length);
+            string hexAddress = convert.convertToHexa(elem.second.address);
+            addressV.push_back(hexAddress);
+        }
+
+        file = inOutFile();
+        file.writeLitralFile(nameV, valueV,lengthV,addressV, "LiteralTable.txt");
     }

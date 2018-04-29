@@ -5,6 +5,8 @@
 #include <map>
 #include <algorithm>
 #include <unordered_map>
+#include "Converters.h"
+#include "inOutFile.h"
 
 using namespace std;
 
@@ -17,7 +19,9 @@ class LitTable
         int getLength(string);
         string getValue(string);
         bool contain(string);
+        void printLiteralTable();
    private:
+       inOutFile file;
         int litLength(string);
         //info about the literals
         struct literal_info {
@@ -38,6 +42,8 @@ class LitTable
         unordered_map<char ,string> hashtable;
         int getAddress(string);
         int convertToBin(int);
+        Converters convert;
+
 
 };
 

@@ -29,7 +29,7 @@ int OperandValidator::getOperandType(string operand) {
 
     operandTypeRegex = regex(REGEX_HEXA_LITERAL);
     if (regex_match(operand, operandTypeRegex)) {
-        if ((operand.length() - 3) %2 == 0) {
+        if ((operand.length() - 4) %2 == 0) {
             return TYPE_HEXA_LITERAL;
         }
         return -1;
