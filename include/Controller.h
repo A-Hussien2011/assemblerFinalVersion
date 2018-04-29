@@ -39,6 +39,7 @@ class Controller
         bool baseFound = false;
         bool endBaseFound = false;
         bool ltorgFound = false;
+        bool endFound = false;
         LitTable litTab;
 };
 

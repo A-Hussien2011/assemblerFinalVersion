@@ -159,6 +159,7 @@ void Controller :: start()
         intermediateFile.push_back(line);
         cout<<line << endl;
         fileIterator ++;
+        if(fileIterator == input.size()) break;
         InstructionLine instruct = InstructionLine(input[fileIterator]);
         label = instruct.getLabel();
         operand = instruct.getOperand();
@@ -168,6 +169,7 @@ void Controller :: start()
         errorMessageArr.push_back(errorMessage);
         locctrArr.push_back(locctr);
         toUpper(&operation);
+        if(operation == "END") endFound = true;
     }
 
     if(baseFound && !endBaseFound){
@@ -198,11 +200,14 @@ void Controller :: start()
     if(!ltorgFound){
         litTab.assignAddress(locctr);
     }
-    ///set end address by symtab.getAddress(operand);
-    intermediateFile.push_back(line);
-    cout<<line << endl;
-    intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << locctr - startingAdrr) )->str());
-    intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << startingAdrr) )->str());
+    if(endFound){
+        ///set end address by symtab.getAddress(operand);
+        intermediateFile.push_back(line);
+        cout<<line << endl;
+        intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << locctr - startingAdrr) )->str());
+        intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << startingAdrr) )->str());
+
+    }
     cout<<locctr - startingAdrr << endl;
 
 }
