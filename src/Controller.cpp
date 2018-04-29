@@ -132,7 +132,7 @@ void Controller :: start()
             }
             if((operation == "NOBASE" || operation == "LTORG")
                 && type != TYPE_WITHOUT_LABEL_AND_OPERAND && type != TYPE_WITH_LABEL_WITHOUT_OPERAND){
-                errorMessage = "error in operand";
+                errorMessage = operation + " found with label or operand";
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -144,7 +144,7 @@ void Controller :: start()
                 operandType = opValid.getOperandType(operand);
                 cout<<"Operand type "<<operandType<<endl;
                 if (operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
-                    errorMessage = "error in operand";
+                    errorMessage = "operand is not valid";
                     intermediateFile.push_back(line);
                     errorMessageArr.push_back(errorMessage);
                     locctrArr.push_back(locctr);
@@ -163,7 +163,7 @@ void Controller :: start()
             if(type == TYPE_WITH_LABEL || type == TYPE_WITH_LABEL_WITHOUT_OPERAND){
 
                 if(symTab.containSymbol(&label)){
-                    errorMessage = "Symbol already found";
+                    errorMessage = "duplicated label in symbol table";
                 } else{
                     symTab.addSymbol(&label, locctr, operation == "EQU");
                 }
@@ -196,11 +196,11 @@ void Controller :: start()
                     || operandType == TYPE_INDIRECT_SYMBOL
                     || operandType == TYPE_SYMBOL_OPERAND)
                     && !symTab.containSymbol(&operand)) {
-                        errorMessage = "error in operand";
+                        errorMessage = "label is not defined before EQU";
                 } else if (operandType == TYPE_EXPRESSION){
                     string symbolFromExp = getSymbol(operand);
                     if (!symTab.containSymbol(&symbolFromExp)) {
-                        errorMessage = "error in operand";
+                        errorMessage = "label is not defined before EQU";
                     }
                 }
             } else if (operation == "LTORG") {
@@ -242,7 +242,7 @@ void Controller :: start()
         if (type == TYPE_WITH_LABEL || type == TYPE_WITHOUT_LABEL) {
             int operandType = opValid.getOperandType(operand);
             if(operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
-              errorMessage = "error in operand";
+              errorMessage = "operand is not valid";
               errorMessageArr.push_back(errorMessage);
             }
         }

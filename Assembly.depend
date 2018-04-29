@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1524965129 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\main.cpp
+1525038420 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\main.cpp
 	<iostream>
 	<InstructionLine.h>
 	<OperationTable.h>
@@ -10,7 +10,7 @@
 	<OperandValidator.h>
 	<OpValidator.h>
 
-1524971469 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\instructionline.h
+1525038420 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\instructionline.h
 	<string>
 
 1524843244 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\asciicode.cpp
@@ -18,14 +18,14 @@
 
 1524841559 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\asciicode.h
 
-1524841132 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\converters.cpp
+1525038317 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\converters.cpp
 	"Converters.h"
 	<iostream>
 	<string.h>
 	<sstream>
 	<iomanip>
 
-1524841654 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\converters.h
+1525038317 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\converters.h
 	<iostream>
 
 1524964980 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\directivetable.cpp
@@ -49,19 +49,22 @@
 	<iostream>
 	<map>
 
-1524948340 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\inoutfile.cpp
+1525038421 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\inoutfile.cpp
 	"inOutFile.h"
 	<iostream>
 	"fstream"
 	<vector>
+	"Converters.h"
+	<iomanip>
 
-1524844973 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\inoutfile.h
+1525038420 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\inoutfile.h
 	<vector>
 	<iostream>
 
-1524971730 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\instructionline.cpp
+1525038421 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\instructionline.cpp
 	"InstructionLine.h"
 	<regex>
+	<iostream>
 
 1524947911 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\littable.cpp
 	"LitTable.h"
@@ -77,7 +80,7 @@
 	<algorithm>
 	<unordered_map>
 
-1524961011 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
+1525038317 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
 	<OperandValidator.h>
 	<string>
 	<iostream>
@@ -99,16 +102,20 @@
 1524958808 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operationinfomation.h
 	<vector>
 
-1524948059 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\symboltable.cpp
+1525038317 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\symboltable.cpp
 	"SymbolTable.h"
 	<iostream>
 	<map>
 	<algorithm>
+	<vector>
+	"Converters.h"
+	"inOutFile.h"
 
-1524925065 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\symboltable.h
+1525038317 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\symboltable.h
 	<algorithm>
 	<iostream>
 	<map>
+	"inOutFile.h"
 
 1524966356 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\controller.h
 	<vector>
