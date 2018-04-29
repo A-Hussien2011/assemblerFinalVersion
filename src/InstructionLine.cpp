@@ -2,7 +2,7 @@
 // Created by Bassam on 4/21/2018.
 //
 
-#include "InstructionLine.h"
+#include "include/InstructionLine.h"
 #include <regex>
 #include <iostream>
 
@@ -22,16 +22,6 @@ void InstructionLine::parse(const string &instructionLine) {
         setProperties("", "", "", getLine());
         return;
     }
-
-    instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
-    if (regex_match(getLine(), instructionTypeRegex)) {
-            setType(TYPE_WITHOUT_LABEL);
-        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
-        setProperties("", matcher.str(2),
-                      matcher.str(3), matcher.str(4));
-        return;
-    }
-
     instructionTypeRegex = regex(REGEX_WITH_LABEL);
     if (regex_match(getLine(), instructionTypeRegex)) {
         setType(TYPE_WITH_LABEL);
@@ -41,12 +31,21 @@ void InstructionLine::parse(const string &instructionLine) {
         return;
     }
 
+
     instructionTypeRegex = regex(REGEX_WITH_LABEL_WITHOUT_OPERAND);
     if (regex_match(getLine(), instructionTypeRegex)) {
         setType(TYPE_WITH_LABEL_WITHOUT_OPERAND);
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
         setProperties(matcher.str(1), matcher.str(2),
                       "", matcher.str(3));
+        return;
+    }
+    instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
+    if (regex_match(getLine(), instructionTypeRegex)) {
+        setType(TYPE_WITHOUT_LABEL);
+        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
+        setProperties("", matcher.str(2),
+                      matcher.str(3), matcher.str(4));
         return;
     }
 
@@ -100,11 +99,11 @@ const string &InstructionLine::getOperation() const {
 }
 
 void InstructionLine::setOperation(const string &operation) {
-    std::size_t pos = operation.find("+");
-    std::string operationReduced = operation.substr(0,pos);
-
-    if (operation == operationReduced) {
+    string operationReduced;
+    int plusSignPosition = operation.find('+');
+    if (plusSignPosition < 0) {
         setInstructionFormatType(FORMAT_THREE);
+        operationReduced = operation;
     } else {
         setInstructionFormatType(FORMAT_FOUR);
         operationReduced = operation.substr(1, operation.length());;
