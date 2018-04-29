@@ -13,7 +13,7 @@ public:
     bool contains(std::string directive);
     DirectiveTable();
 private:
-    string toUpper(string*);
+    void toUpper(string*);
     static DirectiveTable *instance;
     std::vector<std::string> dirTable;
 

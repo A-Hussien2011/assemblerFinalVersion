@@ -2,14 +2,10 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
-#include <string.h>
-#include <string>
 #include <regex>
 
 using namespace std;
 
-OperandValidator::OperandValidator(){
-}
 int OperandValidator::getOperandType(string operand) {
     using namespace std::regex_constants;
     regex operandTypeRegex(REGEX_IMMEDITAE_WORD);

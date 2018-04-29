@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1524919813 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\main.cpp
+1524965129 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\main.cpp
 	<iostream>
 	<InstructionLine.h>
 	<OperationTable.h>
@@ -7,6 +7,8 @@
 	<iostream>
 	<map>
 	<algorithm>
+	<OperandValidator.h>
+	<OpValidator.h>
 
 1524948381 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\instructionline.h
 	<string>
@@ -26,12 +28,12 @@
 1524841654 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\converters.h
 	<iostream>
 
-1524947850 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\directivetable.cpp
+1524964980 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\directivetable.cpp
 	"DirectiveTable.h"
 	<iostream>
 	<algorithm>
 
-1524920092 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\directivetable.h
+1524964942 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\directivetable.h
 	<vector>
 	<string>
 	<algorithm>
@@ -75,17 +77,14 @@
 	<algorithm>
 	<unordered_map>
 
-1524958261 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
+1524961011 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operandvalidator.cpp
 	<OperandValidator.h>
 	<string>
 	<iostream>
 	<stdio.h>
-	<string.h>
-	<string>
 	<regex>
 
-1524957706 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandvalidator.h
-	<string>
+1524962831 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandvalidator.h
 	<string>
 
 1524958771 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\operationtable.cpp
@@ -116,7 +115,7 @@
 	<inOutFile.h>
 	<LitTable.h>
 
-1524958274 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\controller.cpp
+1524965440 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\controller.cpp
 	<Controller.h>
 	<iostream>
 	<inOutFile.h>
@@ -143,5 +142,15 @@
 	<string>
 
 1524948559 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\operandsizevalidator.h
+	<string>
+
+1524962842 source:f:\csed\2nd sem\system programming\assemblersicxe\assembly\src\opvalidator.cpp
+	"OpValidator.h"
+	<string>
+	<iostream>
+	<stdio.h>
+	<regex>
+
+1524962835 f:\csed\2nd sem\system programming\assemblersicxe\assembly\include\opvalidator.h
 	<string>
 

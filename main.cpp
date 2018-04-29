@@ -6,14 +6,18 @@
 #include <map>
 #include <algorithm>
 #include <OperandValidator.h>
+
+#include <OpValidator.h>
 using namespace std;
 
-
+void toUpper(string* symbolName) {
+        transform(symbolName->begin(), symbolName->end(), symbolName->begin(), ::toupper);
+}
 
 int main() {
 
     InstructionLine instructionLine = InstructionLine(
-            "                 lda   3  ");
+            "  loop      +sta   3  ");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA       X   ,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("                 LDA       X,X             .sadsa             ");
     //InstructionLine instructionLine = InstructionLine("           LABEL      LDA                               ");
@@ -29,14 +33,11 @@ int main() {
 
 
     Controller controller;
-   //controller.start();
-   //OperandValidator op = OperandValidator();
-   OperationTable x;
-   x.getInstance();
-   cout << x.getFormat("+LDA");
+    controller.start();
 
 
 
 
     return 0;
 }
+

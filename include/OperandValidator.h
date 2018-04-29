@@ -1,7 +1,6 @@
 #ifndef PASS1_OPERANDVALIDATOR_H
 #define PASS1_OPERANDVALIDATOR_H
 #include <string>
-#include <string>
 using namespace std;
 
 class OperandValidator {
@@ -23,18 +22,17 @@ public :
     static const int TYPE_LOCCTR = 13;//R
     static const int TYPE_EXPRESSION = 14;//R
 
-    OperandValidator();
     int getOperandType(string);
     bool isCompatible(int, string, string);
     bool isRelative(int);
     bool isAbsolute(int);
 
 private :
+    const string REGEX_SYMBOL_OPERAND = "^([a-zA-Z])+([a-zA-Z0-9\\$])*";
     const string REGEX_IMMEDITAE_WORD = "^#(\\d)+$" ;
     const string REGEX_IMMEDITAE_SYMBOL = "^#" + REGEX_SYMBOL_OPERAND;
     const string REGEX_INDIRECT_WORD = "^@(\\d)+$" ;
     const string REGEX_INDIRECT_SYMBOL = "^@" + REGEX_SYMBOL_OPERAND ;
-    const string REGEX_SYMBOL_OPERAND = "^([a-zA-Z])+([a-zA-Z0-9\\$])*";
     const string REGEX_HEXA_LITERAL = "^=(X|x)\'([a-fA-F0-9])+\'$";
     const string REGEX_WORD_LITERAL = "^=(W|w)\'(-)?(\\d)+\'$";
     const string REGEX_BYTE_LITERAL = "^=(C|c)\'([a-zA-Z0-9])+\'$";

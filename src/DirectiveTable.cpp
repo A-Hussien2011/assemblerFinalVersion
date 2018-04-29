@@ -38,7 +38,7 @@ void DirectiveTable::initDirTable() {
     dirTable.push_back("BASE");
     dirTable.push_back("NOBASE");
 }
-string DirectiveTable:: toUpper(string* symbolName) {
+void DirectiveTable:: toUpper(string* symbolName) {
         transform(symbolName->begin(), symbolName->end(), symbolName->begin(), ::toupper);
 }
 

@@ -50,7 +50,8 @@ void Controller :: start()
     int type = instruction.getType();
     int format = instruction.getInstructionFormatType();
     bool startFlag = false;
-    if(operation == "start"){
+    toUpper(&operation);
+    if(operation == "START"){
         locctr = atoi(operand.c_str());
         startingAdrr = locctr;
         startFlag = true;
@@ -115,7 +116,7 @@ void Controller :: start()
                 errorMessage = "Opcode doesn't exist";
             }
 
-            if(operation == "WOED"){
+            if(operation == "WORD"){
                 locctr += 3;
             } else if(operation == "RESW"){
                 locctr += 3 * atoi(operand.c_str());
@@ -164,8 +165,9 @@ void Controller :: start()
         operation = instruct.getOperation();
         line = instruct.getLine();
         type = instruct.getType();
-        errorMessageArr[fileIterator] = errorMessage;
-        locctrArr[fileIterator] = locctr;
+        errorMessageArr.push_back(errorMessage);
+        locctrArr.push_back(locctr);
+        toUpper(&operation);
     }
 
     if(baseFound && !endBaseFound){

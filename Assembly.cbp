@@ -41,6 +41,8 @@
 		<Unit filename="include/GroupTable.h" />
 		<Unit filename="include/InstructionLine.h" />
 		<Unit filename="include/LitTable.h" />
+		<Unit filename="include/OpValidator.h" />
+		<Unit filename="include/OperandSizeValidator.h" />
 		<Unit filename="include/OperandValidator.h" />
 		<Unit filename="include/OperationInfomation.h">
 			<Option target="&lt;{~None~}&gt;" />
@@ -56,6 +58,8 @@
 		<Unit filename="src/GroupTable.cpp" />
 		<Unit filename="src/InstructionLine.cpp" />
 		<Unit filename="src/LitTable.cpp" />
+		<Unit filename="src/OpValidator.cpp" />
+		<Unit filename="src/OperandSizeValidator.cpp" />
 		<Unit filename="src/OperandValidator.cpp" />
 		<Unit filename="src/OperationTable.cpp" />
 		<Unit filename="src/SymbolTable.cpp" />
