@@ -133,7 +133,7 @@ void Controller :: start()
                     && !symTab.containSymbol(&operand)) {
                         errorMessage = "error in operand";
                 } else {
-                    locctr = symTab.getSymbolAddress(&operand);
+                    locctr = atoi(operand.c_str());
                 }
             } else if (operation == "EQU") {
                 if ((operandType == TYPE_IMMEDITAE_SYMBOL
@@ -160,6 +160,7 @@ void Controller :: start()
         cout<<line << endl;
         fileIterator ++;
         if(fileIterator == input.size()) break;
+        cout << "input file size:" << input.size() << "file iterator : " << fileIterator <<endl;
         InstructionLine instruct = InstructionLine(input[fileIterator]);
         label = instruct.getLabel();
         operand = instruct.getOperand();

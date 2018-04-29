@@ -97,13 +97,14 @@ const string &InstructionLine::getOperation() const {
 }
 
 void InstructionLine::setOperation(const string &operation) {
-    string operationReduced;
-    if (operation.find('+') >= 0) {
+    std::size_t pos = operation.find("+");
+    std::string operationReduced = operation.substr(0,pos);
+
+    if (operation == operationReduced) {
         setInstructionFormatType(FORMAT_THREE);
-        operationReduced = operation.substr(1, operation.length());
     } else {
         setInstructionFormatType(FORMAT_FOUR);
-        operationReduced = operation;
+        operationReduced = operation.substr(1, operation.length());;
     }
 
     InstructionLine::operation = operationReduced;
