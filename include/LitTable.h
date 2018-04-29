@@ -21,6 +21,7 @@ class LitTable
         bool contain(string);
         void printLiteralTable();
    private:
+       string literalValue;
        inOutFile file;
         int litLength(string);
         //info about the literals

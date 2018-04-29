@@ -281,6 +281,7 @@ void Controller :: start()
     //cout<<locctr - startingAdrr << endl;
     file.writeFile(intermediateFile, errorMessageArr, locctrArr, "trial.txt");
     symTab.printSymbolTable();
+    litTab.printLiteralTable();
 
 }
 

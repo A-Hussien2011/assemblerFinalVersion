@@ -14,9 +14,7 @@ using namespace std;
         literal_info litInfo;
         litInfo.address = -1;
         litInfo.value = litValue(litName, type);
-        cout<<"Value "<<litInfo.value<<endl;
         int literalLength = litLength(litName);
-        cout<<"Length "<<literalLength<<endl;
         litInfo.length = literalLength;
         literal_table[litName] = litInfo;
     }
@@ -35,8 +33,14 @@ using namespace std;
     }
 
     int LitTable::litLength(string litName) {
-        string value = getValue(litName);
-        return ceil(value.length()/2);
+        int leng;
+        string value = literalValue;
+        if (litName.at(1) == 'W' || litName.at(1) == 'w') {
+            leng = 3;
+        } else {
+           leng = ceil(value.length()/2);
+        }
+        return leng;
     }
 
     string LitTable::litValue(string litName, int type) {
@@ -49,7 +53,7 @@ using namespace std;
                 value = convertToHexa(convertToBin(decimalValue));
             } else {
                 string temp = litName.substr(3, litName.length() - 4);
-                 value = convert.convertToHexa(atoi(temp.c_str()));
+                 value = convertToHexa(atoi(temp.c_str()));
             }
         } else if (type == 5) {
             value = litName.substr(3, litName.length() - 4);
@@ -58,6 +62,7 @@ using namespace std;
                 value.append(getAscii(litName.at(i)));
             }
         }
+        literalValue = value;
         return value;
     }
 
@@ -86,8 +91,14 @@ using namespace std;
     }
 
     int LitTable::getIncrValue (string litName) {
+        int incValue;
         string value = getValue(litName);
-        return ceil(value.length()/2);
+        if (litName.at(1) == 'W' || litName.at(1) == 'w') {
+            incValue = 3;
+        } else {
+           incValue = ceil(value.length()/2);
+        }
+        return incValue;
     }
 
     string LitTable:: getAscii(char x){

@@ -48,7 +48,7 @@ void inOutFile::writeLitralFile(vector<string> name, vector<string> value,
                                 vector<int> length, vector<string> address, string fileName) {
     std::size_t line_count = name.size();
     std::ofstream out(fileName);
-    out << setw(10) << left << " LITERAL TABLE" << setw(10) << left << endl;
+    out << setw(10) << left << "            LITERAL TABLE" << setw(10) << left << endl;
      out << setw(10) << left << "Name" << setw(10) << left << "Value";
     out << setw(10) << left << "Length" << setw(10) << left << "Address"<<endl;
     for( std::size_t i = 0; i < line_count; ++i ) {
