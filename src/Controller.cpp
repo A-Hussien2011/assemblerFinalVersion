@@ -63,6 +63,9 @@ void Controller :: start()
         locctr = atoi(operand.c_str());
         startingAdrr = locctr;
         startFlag = true;
+        if (type == TYPE_WITH_LABEL) {
+            symTab.addSymbol(&label, locctr, false);
+        }
     }
     if(!startFlag){
         locctr = 0;
