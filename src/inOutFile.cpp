@@ -5,6 +5,7 @@
 #include <iostream>
 #include "fstream"
 #include <vector>
+#include "Converters.h"
 
 using namespace std;
 
@@ -19,11 +20,16 @@ vector<string> inOutFile::readFile(string fileName) {
     return fileContent;
 }
 
-void inOutFile::writeFile(vector<string> fileContent, string fileName) {
-    std::size_t line_count = fileContent.size();
+void inOutFile::writeFile(vector<string> fileContent, vector<string> errorMessageArr,
+                          vector<int> locctrArr, string fileName) {
+    std::size_t line_count = errorMessageArr.size();
     std::ofstream out(fileName);
+    Converters convert;
     for( std::size_t i = 0; i < line_count; ++i ) {
+        string locctr = convert.convertToHexa(locctrArr[i]);
+        out <<locctr<< "    ";
         out <<fileContent[i] << std::endl;
+        out <<errorMessageArr[i] << std::endl;
     }
     out.close();
 }

@@ -61,3 +61,5 @@ using namespace std;
     void SymbolTable::toUpper(string* symbolName) {
         transform(symbolName->begin(), symbolName->end(), symbolName->begin(), ::toupper);
     }
+
+

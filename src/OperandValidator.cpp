@@ -77,6 +77,11 @@ int OperandValidator::getOperandType(string operand) {
         return TYPE_EXPRESSION;
     }
 
+    operandTypeRegex = regex(REGEX_SYMBOL_OPERAND);
+    if (regex_match(operand, operandTypeRegex)) {
+        return TYPE_SYMBOL_OPERAND;
+    }
+
     if (operand == "*") {
         return TYPE_LOCCTR;
     }

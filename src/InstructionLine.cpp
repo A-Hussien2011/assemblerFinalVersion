@@ -4,9 +4,12 @@
 
 #include "InstructionLine.h"
 #include <regex>
+#include <iostream>
+
 
 InstructionLine::InstructionLine(string instructionLine) {
     setInstructionLine(instructionLine);
+
     parse(instructionLine);
 }
 
@@ -17,6 +20,15 @@ void InstructionLine::parse(const string &instructionLine) {
     if (regex_match(getLine(), instructionTypeRegex)) {
         setType(TYPE_COMMENT_ONLY);
         setProperties("", "", "", getLine());
+        return;
+    }
+
+    instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
+    if (regex_match(getLine(), instructionTypeRegex)) {
+            setType(TYPE_WITHOUT_LABEL);
+        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
+        setProperties("", matcher.str(2),
+                      matcher.str(3), matcher.str(4));
         return;
     }
 
@@ -35,15 +47,6 @@ void InstructionLine::parse(const string &instructionLine) {
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
         setProperties(matcher.str(1), matcher.str(2),
                       "", matcher.str(3));
-        return;
-    }
-
-    instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
-    if (regex_match(getLine(), instructionTypeRegex)) {
-        setType(TYPE_WITHOUT_LABEL);
-        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
-        setProperties("", matcher.str(2),
-                      matcher.str(3), matcher.str(4));
         return;
     }
 

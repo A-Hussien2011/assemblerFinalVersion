@@ -20,6 +20,7 @@ string Converters::convertToHexa(int decimalNumber) {
         decimalNumber /= 16;
         hexaLength++;
     }
+
     string result = convertCharToString(hexaNumber, hexaLength);
 
     return result;
@@ -36,6 +37,11 @@ int Converters::convertToDecimal(string hexaNumber) {
 string Converters::convertCharToString(char hexaNumber[], int hexaLength) {
     char newChar[hexaLength];
     int counter = 0;
+    int hexa = hexaLength;
+    while (hexa < 4) {
+        newChar[counter++] = '0';
+        hexa++;
+    }
     for (int i = hexaLength - 1; i >= 0; i--) {
         newChar[counter++] = hexaNumber[i];
     }

@@ -8,7 +8,6 @@ using namespace std;
 class Converters
 {
     public:
-        Converters();
         int convertToDecimal(string);
         string convertToHexa(int);
     private:
