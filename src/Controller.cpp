@@ -25,6 +25,10 @@ void Controller :: start()
 {
     std::vector<std::string> errorMessageArr;
     std::vector<int> locctrArr;
+    std::vector<std::string> operandVec;
+    std::vector<std::string> operationVec;
+    std::vector<std::string> labelVec;
+    std::vector<std::string> commentVec;
 
     int locctr = 0;
     LitTable litTab = LitTable();
@@ -60,6 +64,11 @@ void Controller :: start()
     }
     ///add while comment
     while(type == TYPE_COMMENT_ONLY){
+        operandVec.push_back(operand);
+        operationVec.push_back(operation);
+        labelVec.push_back(label);
+        commentVec.push_back(instruction.getComment());
+
         intermediateFile.push_back(line);
         errorMessageArr.push_back(errorMessage);
         locctrArr.push_back(locctr);
@@ -85,6 +94,10 @@ void Controller :: start()
         locctr = 0;
         startingAdrr = 0;
     }
+    operandVec.push_back(operand);
+    operationVec.push_back(operation);
+    labelVec.push_back(label);
+    commentVec.push_back(instruction.getComment());
     intermediateFile.push_back(line);
     errorMessageArr.push_back(errorMessage);
     locctrArr.push_back(locctr);
@@ -94,23 +107,28 @@ void Controller :: start()
 
     while(operation != "END" && fileIterator !=  input.size()){
         InstructionLine instruct = InstructionLine(input[fileIterator]);
-        cout<<"Line "<<instruct.getLine()<<endl;
+        cout<<"Line :: "<<instruct.getLine()<<endl;
+        cout<<"Label :: "<<instruct.getLabel()<<endl;
         label = instruct.getLabel();
         operand = instruct.getOperand();
-        cout<<"Operand "<<instruct.getOperand()<<endl;
+        cout<<"Operand :: "<<instruct.getOperand()<<endl;
         operation = instruct.getOperation();
-        cout<<"Operation "<<operation<<endl;
+        cout<<"Operation :: "<<operation<<endl;
         line = instruct.getLine();
         type = instruct.getType();
         toUpper(&operation);
         format = instruct.getInstructionFormatType();
         error = instruction.getError();
-         cout<<"Error "<<error<<endl;
+         cout<<"Error :: "<<error<<endl;
 
         if(type != TYPE_COMMENT_ONLY){
 
             if (error != "") {
                 errorMessage = instruct.getError();
+                operandVec.push_back(operand);
+                operationVec.push_back(operation);
+                labelVec.push_back(label);
+                commentVec.push_back(instruction.getComment());
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -120,6 +138,10 @@ void Controller :: start()
             if(operation == "END") {
                 endFound = true;
                 errorMessage = "";
+                operandVec.push_back(operand);
+                operationVec.push_back(operation);
+                labelVec.push_back(label);
+                commentVec.push_back(instruction.getComment());
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -138,6 +160,10 @@ void Controller :: start()
                     }
             } else if (!dirs.contains(operation)) {
                 errorMessage = "Opcode doesn't exist";
+                operandVec.push_back(operand);
+                operationVec.push_back(operation);
+                labelVec.push_back(label);
+                commentVec.push_back(instruction.getComment());
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -147,6 +173,10 @@ void Controller :: start()
             if((operation == "NOBASE" || operation == "LTORG")
                 && type != TYPE_WITHOUT_LABEL_AND_OPERAND && type != TYPE_WITH_LABEL_WITHOUT_OPERAND){
                 errorMessage = operation + " found with label or operand";
+                operandVec.push_back(operand);
+                operationVec.push_back(operation);
+                labelVec.push_back(label);
+                commentVec.push_back(instruction.getComment());
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -159,6 +189,10 @@ void Controller :: start()
                 cout<<"Operand type "<<operandType<<endl;
                 if (operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
                     errorMessage = "operand is not valid";
+                    operandVec.push_back(operand);
+                    operationVec.push_back(operation);
+                    labelVec.push_back(label);
+                    commentVec.push_back(instruction.getComment());
                     intermediateFile.push_back(line);
                     errorMessageArr.push_back(errorMessage);
                     locctrArr.push_back(locctr);
@@ -226,6 +260,10 @@ void Controller :: start()
         }
 
         //handle if endBase = false; then error in line of base or load base
+        operandVec.push_back(operand);
+        operationVec.push_back(operation);
+        labelVec.push_back(label);
+        commentVec.push_back(instruction.getComment());
         intermediateFile.push_back(line);
         errorMessageArr.push_back(errorMessage);
         locctrArr.push_back(locctr);
@@ -266,20 +304,16 @@ void Controller :: start()
     }
     if(!endFound){
         errorMessage = "End statement not found";
+        operandVec.push_back(operand);
+        operationVec.push_back(operation);
+        labelVec.push_back(label);
+        commentVec.push_back(instruction.getComment());
         intermediateFile.push_back(line);
         errorMessageArr.push_back(errorMessage);
         locctrArr.push_back(locctr);
     }
- /*   if(endFound){
-        ///set end address by symtab.getAddress(operand);
-        intermediateFile.push_back(line);
-        intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << locctr - startingAdrr) )->str());
-        intermediateFile.push_back(static_cast<ostringstream*>( &(ostringstream() << startingAdrr) )->str());
 
-    }
-    */
-    //cout<<locctr - startingAdrr << endl;
-    file.writeFile(intermediateFile, errorMessageArr, locctrArr, "trial.txt");
+    file.writeFile(labelVec, operationVec, operandVec, commentVec, errorMessageArr, locctrArr, "trial.txt");
     symTab.printSymbolTable();
     litTab.printLiteralTable();
 

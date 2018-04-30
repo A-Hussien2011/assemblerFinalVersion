@@ -14,7 +14,8 @@ using namespace std;
 class inOutFile {
 public:
     static vector<string> readFile(string);
-    void static writeFile(vector<string>,vector<string>,vector<int>, string);
+    void static writeFile(vector<string>,vector<string>,vector<string>,vector<string>,
+                          vector<string>,vector<int>, string);
     void static writeSymbolFile(vector<string>, vector<string>,string);
     void static writeLitralFile(vector<string>, vector<string>,
                                 vector<int>, vector<string>,string);

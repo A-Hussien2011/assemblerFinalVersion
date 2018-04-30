@@ -2,7 +2,7 @@
 // Created by Bassam on 4/21/2018.
 //
 
-#include "include/InstructionLine.h"
+#include "InstructionLine.h"
 #include <regex>
 #include <iostream>
 

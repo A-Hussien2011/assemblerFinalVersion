@@ -21,16 +21,25 @@ vector<string> inOutFile::readFile(string fileName) {
     return fileContent;
 }
 
-void inOutFile::writeFile(vector<string> fileContent, vector<string> errorMessageArr,
+void inOutFile::writeFile(vector<string> label,vector<string> operation, vector<string> operand,
+                          vector<string> comment,vector<string> errorMessageArr,
                           vector<int> locctrArr, string fileName) {
-    std::size_t line_count = errorMessageArr.size();
+    std::size_t line_count = operation.size();
     std::ofstream out(fileName);
     Converters convert;
+    out << setw(10) << left << "                          PASS 1 " << setw(10) << left << endl;
+     out << setw(10) << left << "Line" << setw(10) << left << "Address"<< setw(10) << left <<"Label";
+      out << setw(15) << left << "Operation" << setw(10) << left << "Operand";
+       out << setw(10) << left << "Comment" << setw(10) << left << endl;
     for( std::size_t i = 0; i < line_count; ++i ) {
         string locctr = convert.convertToHexa(locctrArr[i]);
-        out <<locctr<< "    ";
-        out <<fileContent[i] << std::endl;
-        out <<errorMessageArr[i] << std::endl;
+        int line = i+1;
+        out << setw(10) << left << line << setw(10) << left << locctr << setw(10) << left << label[i];
+      out << setw(15) << left << operation[i] << setw(10) << left << operand[i];
+       out << setw(10) << left << comment[i] << setw(10) << left << endl;
+        if (errorMessageArr[i].length() > 2) {
+        out << setw(10) << left << errorMessageArr[i] << setw(10) << left <<endl;
+        }
     }
     out.close();
 }

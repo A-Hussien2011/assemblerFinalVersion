@@ -66,17 +66,19 @@ using namespace std;
 
     void SymbolTable::printSymbolTable() {
         Converters convert;
-        map<string, int> temp;
+        std::multimap<int, std::string> temp;
         std::vector<std::string> symbolAddressVec;
         std::vector<std::string> symbolLabelVec;
 
         for(auto elem : symbol_table) {
-            temp[elem.first] = elem.second.address;
+
+            temp.insert(std::pair<int, std::string>(elem.second.address, elem.first));
         }
 
+
         for(auto elem : temp) {
-            symbolLabelVec.push_back(elem.first);
-            string hexAddress = convert.convertToHexa(elem.second);
+            symbolLabelVec.push_back(elem.second);
+            string hexAddress = convert.convertToHexa(elem.first);
             symbolAddressVec.push_back(hexAddress);
         }
 

@@ -48,8 +48,8 @@ using namespace std;
         if (type == 6) {
             string str;
             if (litName.at(3) == '-') {
-                str = litName.append(litName, 3, litName.length() - 1);
-                int decimalValue = atoi(str.c_str()) + 1;
+                str = litName.substr(4, litName.length() - 5);
+                int decimalValue = atoi(str.c_str());
                 value = convertToHexa(convertToBin(decimalValue));
             } else {
                 string temp = litName.substr(3, litName.length() - 4);
@@ -205,7 +205,7 @@ using namespace std;
     }
 
     int LitTable::convertToBin(int value) {
-        string str = bitset<16>(value).to_string();
+        string str = bitset<16>(12).to_string();
         int i;
         char s[17];
         for (i = 0; i < str.length(); i++) {
@@ -215,7 +215,15 @@ using namespace std;
                 s[i] = '0';
             }
         }
-        s[i] = '\0';
+         s[i] = '\0';
+        for (i = 15; i >= 0; i--) {
+            if(s[i] == '0') {
+                s[i] = '1';
+                break;
+            } else {
+                s[i] = '0';
+            }
+        }
         char* temp = &(s[0]);
         value = strtol(temp, NULL, 2);
         return value;
