@@ -109,19 +109,14 @@ void Controller :: start()
 
     while(operation != "END" && fileIterator !=  input.size()){
         InstructionLine instruct = InstructionLine(input[fileIterator]);
-        cout<<"Line :: "<<instruct.getLine()<<endl;
-        cout<<"Label :: "<<instruct.getLabel()<<endl;
         label = instruct.getLabel();
         operand = instruct.getOperand();
-        cout<<"Operand :: "<<instruct.getOperand()<<endl;
         operation = instruct.getOperation();
-        cout<<"Operation :: "<<operation<<endl;
         line = instruct.getLine();
         type = instruct.getType();
         toUpper(&operation);
         format = instruct.getInstructionFormatType();
         error = instruction.getError();
-         cout<<"Error :: "<<error<<endl;
 
         if(type != TYPE_COMMENT_ONLY){
 
@@ -188,7 +183,6 @@ void Controller :: start()
             int operandType;
             if (type == TYPE_WITH_LABEL || type == TYPE_WITHOUT_LABEL) {
                 operandType = opValid.getOperandType(operand);
-                cout<<"Operand type "<<operandType<<endl;
                 if (operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
                     errorMessage = "operand is not valid";
                     operandVec.push_back(operand);
@@ -286,7 +280,7 @@ void Controller :: start()
             errorMessageArr.push_back(errorMessage);
         }
         if (type == TYPE_WITH_LABEL || type == TYPE_WITH_LABEL_WITHOUT_OPERAND) {
-            if (symTab.containSymbol(&label)) {
+            if (!symTab.containSymbol(&label)) {
                 symTab.addSymbol(&label, locctr, false);
             } else {
                 errorMessage = "duplicate symbol";
