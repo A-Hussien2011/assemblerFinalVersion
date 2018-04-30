@@ -5,6 +5,7 @@
 #include "include/InstructionLine.h"
 #include "include/OperationTable.h"
 #include <regex>
+#include <include/DirectiveTable.h>
 
 
 InstructionLine::InstructionLine(string instructionLine) {
@@ -25,9 +26,10 @@ void InstructionLine::parse(const string &instructionLine) {
     instructionTypeRegex = regex(REGEX_WITH_LABEL);
     if (regex_match(getLine(), instructionTypeRegex)) {
         OperationTable *operationTable = OperationTable::getInstance();
+        DirectiveTable *directiveTable = DirectiveTable::getInstance();
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
 
-        if (!operationTable->contains(toUpper(matcher.str(1)))) {
+        if (!operationTable->contains(toUpper(matcher.str(1))) && !directiveTable->contains(toUpper(matcher.str(1)))) {
             setType(TYPE_WITH_LABEL);
             setProperties(matcher.str(1), matcher.str(2),
                           matcher.str(3), matcher.str(4));
@@ -44,9 +46,10 @@ void InstructionLine::parse(const string &instructionLine) {
     instructionTypeRegex = regex(REGEX_WITH_LABEL_WITHOUT_OPERAND);
     if (regex_match(getLine(), instructionTypeRegex)) {
         OperationTable *operationTable = OperationTable::getInstance();
+        DirectiveTable *directiveTable = DirectiveTable::getInstance();
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
 
-        if (!operationTable->contains(toUpper(matcher.str(1)))) {
+        if (!operationTable->contains(toUpper(matcher.str(1))) && !directiveTable->contains(toUpper(matcher.str(1)))) {
             setType(TYPE_WITH_LABEL_WITHOUT_OPERAND);
             setProperties(matcher.str(1), matcher.str(2),
                           "", matcher.str(3));
