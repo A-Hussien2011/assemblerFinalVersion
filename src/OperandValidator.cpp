@@ -139,7 +139,7 @@ bool OperandValidator::isCompatible(int operandType, string opCode, string opera
 }
 bool OperandValidator::isNumberPositive(string operand) {
     int integerValue = atoi(operand.c_str());
-    if (integerValue > 0) {
+    if (integerValue >= 0) {
         return true;
     }
     return false;
