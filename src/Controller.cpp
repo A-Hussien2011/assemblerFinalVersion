@@ -81,6 +81,8 @@ void Controller :: start()
         error = instructionComment.getError();
         type = instructionComment.getType();
         format = instructionComment.getInstructionFormatType();
+        toUpper(&operation);
+
     }
     if(operation == "START"){
         locctr = atoi(operand.c_str());

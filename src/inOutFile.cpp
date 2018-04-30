@@ -38,7 +38,7 @@ void inOutFile::writeFile(vector<string> label,vector<string> operation, vector<
       out << setw(15) << left << operation[i] << setw(10) << left << operand[i];
        out << setw(10) << left << comment[i] << setw(10) << left << endl;
         if (errorMessageArr[i].length() > 2) {
-        out << setw(10) << left << errorMessageArr[i] << setw(10) << left <<endl;
+        out << setw(10) << left << " " << errorMessageArr[i] << setw(10) << left <<endl;
         }
     }
     out.close();
