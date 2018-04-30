@@ -2,9 +2,9 @@
 // Created by Bassam on 4/21/2018.
 //
 
-#include "InstructionLine.h"
+#include "include/InstructionLine.h"
+#include "include/OperationTable.h"
 #include <regex>
-#include <iostream>
 
 
 InstructionLine::InstructionLine(string instructionLine) {
@@ -24,22 +24,41 @@ void InstructionLine::parse(const string &instructionLine) {
     }
     instructionTypeRegex = regex(REGEX_WITH_LABEL);
     if (regex_match(getLine(), instructionTypeRegex)) {
-        setType(TYPE_WITH_LABEL);
+        OperationTable *operationTable = OperationTable::getInstance();
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
-        setProperties(matcher.str(1), matcher.str(2),
-                      matcher.str(3), matcher.str(4));
+
+        if (!operationTable->contains(toUpper(matcher.str(1)))) {
+            setType(TYPE_WITH_LABEL);
+            setProperties(matcher.str(1), matcher.str(2),
+                          matcher.str(3), matcher.str(4));
+        } else {
+            setType(TYPE_WITHOUT_LABEL);
+            setProperties("", matcher.str(1),
+                          matcher.str(2), matcher.str(4));
+        }
+
         return;
     }
 
 
     instructionTypeRegex = regex(REGEX_WITH_LABEL_WITHOUT_OPERAND);
     if (regex_match(getLine(), instructionTypeRegex)) {
-        setType(TYPE_WITH_LABEL_WITHOUT_OPERAND);
+        OperationTable *operationTable = OperationTable::getInstance();
         regex_search(getLine().c_str(), matcher, instructionTypeRegex);
-        setProperties(matcher.str(1), matcher.str(2),
-                      "", matcher.str(3));
+
+        if (!operationTable->contains(toUpper(matcher.str(1)))) {
+            setType(TYPE_WITH_LABEL_WITHOUT_OPERAND);
+            setProperties(matcher.str(1), matcher.str(2),
+                          "", matcher.str(3));
+        } else {
+            setType(TYPE_WITHOUT_LABEL);
+            setProperties("", matcher.str(1),
+                          matcher.str(2), matcher.str(3));
+        }
+
         return;
     }
+
     instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
     if (regex_match(getLine(), instructionTypeRegex)) {
         setType(TYPE_WITHOUT_LABEL);
@@ -166,6 +185,8 @@ string InstructionLine::trim(const string &str) {
 
 void InstructionLine::setProperties(const string &label, const string &operation, const string &operand,
                                     const string &comment) {
+
+
     setLabel(label);
     setOperation(operation);
     setOperand(operand);
@@ -190,6 +211,11 @@ int InstructionLine::getOperandType() const {
 
 void InstructionLine::setOperandType(int operandType) {
     InstructionLine::operandType = operandType;
+}
+
+string InstructionLine::toUpper(string str) {
+    for (auto &c: str) c = static_cast<char>(toupper(c));
+    return str;
 }
 
 InstructionLine::~InstructionLine() = default;

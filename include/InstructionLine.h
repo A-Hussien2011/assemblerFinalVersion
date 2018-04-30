@@ -112,6 +112,8 @@ private:
     void setProperties(const string &label, const string &operation, const string &operand, const string &comment);
 
     void appendError(const string &errorToAppend);
+
+    string toUpper(string string);
 };
 
 
