@@ -2,10 +2,11 @@
 // Created by Bassam on 4/21/2018.
 //
 
-#include "include/InstructionLine.h"
-#include "include/OperationTable.h"
+#include "InstructionLine.h"
+#include "OperationTable.h"
 #include <regex>
-#include <include/DirectiveTable.h>
+#include <DirectiveTable.h>
+#include <iostream>
 
 
 InstructionLine::InstructionLine(string instructionLine) {
@@ -23,26 +24,6 @@ void InstructionLine::parse(const string &instructionLine) {
         setProperties("", "", "", getLine());
         return;
     }
-    instructionTypeRegex = regex(REGEX_WITH_LABEL);
-    if (regex_match(getLine(), instructionTypeRegex)) {
-        OperationTable *operationTable = OperationTable::getInstance();
-        DirectiveTable *directiveTable = DirectiveTable::getInstance();
-        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
-
-        if (!operationTable->contains(toUpper(matcher.str(1))) && !directiveTable->contains(toUpper(matcher.str(1)))) {
-            setType(TYPE_WITH_LABEL);
-            setProperties(matcher.str(1), matcher.str(2),
-                          matcher.str(3), matcher.str(4));
-        } else {
-            setType(TYPE_WITHOUT_LABEL);
-            setProperties("", matcher.str(1),
-                          matcher.str(2), matcher.str(4));
-        }
-
-        return;
-    }
-
-
     instructionTypeRegex = regex(REGEX_WITH_LABEL_WITHOUT_OPERAND);
     if (regex_match(getLine(), instructionTypeRegex)) {
         OperationTable *operationTable = OperationTable::getInstance();
@@ -61,6 +42,32 @@ void InstructionLine::parse(const string &instructionLine) {
 
         return;
     }
+
+    instructionTypeRegex = regex(REGEX_WITH_LABEL);
+    if (regex_match(getLine(), instructionTypeRegex)) {
+        OperationTable *operationTable = OperationTable::getInstance();
+        DirectiveTable *directiveTable = DirectiveTable::getInstance();
+        regex_search(getLine().c_str(), matcher, instructionTypeRegex);
+
+        if (!operationTable->contains(toUpper(matcher.str(1))) && !directiveTable->contains(toUpper(matcher.str(1)))) {
+            setType(TYPE_WITH_LABEL);
+            setProperties(matcher.str(1), matcher.str(2),
+                          matcher.str(3), matcher.str(4));
+        } else {
+            if (operationTable->contains(toUpper(matcher.str(2))) || directiveTable->contains(toUpper(matcher.str(2)))) {
+                setError("Label cannot be Mnemonic");
+                setProperties(matcher.str(1), matcher.str(2),
+                matcher.str(3), matcher.str(4));
+                return;
+            }
+            setType(TYPE_WITHOUT_LABEL);
+            setProperties("", matcher.str(1),
+                          matcher.str(2), matcher.str(4));
+        }
+
+        return;
+    }
+
 
     instructionTypeRegex = regex(REGEX_WITHOUT_LABEL);
     if (regex_match(getLine(), instructionTypeRegex)) {

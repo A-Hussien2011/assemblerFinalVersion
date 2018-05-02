@@ -71,7 +71,6 @@ using namespace std;
         std::vector<std::string> symbolLabelVec;
 
         for(auto elem : symbol_table) {
-
             temp.insert(std::pair<int, std::string>(elem.second.address, elem.first));
         }
 

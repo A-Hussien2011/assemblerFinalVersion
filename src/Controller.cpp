@@ -21,7 +21,7 @@ Controller::Controller()
 {
 
 }
-void Controller :: start()
+void Controller :: start(string fileName)
 {
     std::vector<std::string> errorMessageArr;
     std::vector<int> locctrArr;
@@ -33,7 +33,7 @@ void Controller :: start()
     int locctr = 0;
     LitTable litTab = LitTable();
     inOutFile file = inOutFile();
-    std::vector<std::string> input = file.readFile("Reader.txt");
+    std::vector<std::string> input = file.readFile(fileName);
     std::vector<std::string> intermediateFile;
     OperandValidator opValid = OperandValidator();
     DirectiveTable dirs;
@@ -52,6 +52,7 @@ void Controller :: start()
     string operation = instruction.getOperation();
     string line = instruction.getLine();
     string error = instruction.getError();
+    string comment = instruction.getComment();
     int type = instruction.getType();
     int format = instruction.getInstructionFormatType();
     bool startFlag = false;
@@ -67,7 +68,7 @@ void Controller :: start()
         operandVec.push_back(operand);
         operationVec.push_back(operation);
         labelVec.push_back(label);
-        commentVec.push_back(instruction.getComment());
+        commentVec.push_back(comment);
 
         intermediateFile.push_back(line);
         errorMessageArr.push_back(errorMessage);
@@ -80,6 +81,7 @@ void Controller :: start()
         line = instructionComment.getLine();
         error = instructionComment.getError();
         type = instructionComment.getType();
+        comment = instructionComment.getComment();
         format = instructionComment.getInstructionFormatType();
         toUpper(&operation);
 
@@ -99,7 +101,7 @@ void Controller :: start()
     operandVec.push_back(operand);
     operationVec.push_back(operation);
     labelVec.push_back(label);
-    commentVec.push_back(instruction.getComment());
+    commentVec.push_back(comment);
     intermediateFile.push_back(line);
     errorMessageArr.push_back(errorMessage);
     locctrArr.push_back(locctr);
@@ -109,6 +111,7 @@ void Controller :: start()
 
     while(operation != "END" && fileIterator !=  input.size()){
         InstructionLine instruct = InstructionLine(input[fileIterator]);
+        errorMessage="";
         label = instruct.getLabel();
         operand = instruct.getOperand();
         operation = instruct.getOperation();
@@ -116,7 +119,8 @@ void Controller :: start()
         type = instruct.getType();
         toUpper(&operation);
         format = instruct.getInstructionFormatType();
-        error = instruction.getError();
+        error = instruct.getError();
+        comment = instruct.getComment();
 
         if(type != TYPE_COMMENT_ONLY){
 
@@ -125,7 +129,7 @@ void Controller :: start()
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
-                commentVec.push_back(instruction.getComment());
+                commentVec.push_back(comment);
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -138,9 +142,8 @@ void Controller :: start()
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
-                commentVec.push_back(instruction.getComment());
+                commentVec.push_back(comment);
                 intermediateFile.push_back(line);
-                errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
                 break;
             }
@@ -149,18 +152,12 @@ void Controller :: start()
                     if(operation == "LDB" && baseFound){
                         endBaseFound = true;
                     }
-                    if(format == 4){
-                        locctr += 4;
-                    } else{
-                        format = opTable.getFormat(operation);
-                        locctr += format;
-                    }
             } else if (!dirs.contains(operation)) {
                 errorMessage = "Opcode doesn't exist";
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
-                commentVec.push_back(instruction.getComment());
+                commentVec.push_back(comment);
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -173,7 +170,7 @@ void Controller :: start()
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
-                commentVec.push_back(instruction.getComment());
+                commentVec.push_back(comment);
                 intermediateFile.push_back(line);
                 errorMessageArr.push_back(errorMessage);
                 locctrArr.push_back(locctr);
@@ -188,7 +185,7 @@ void Controller :: start()
                     operandVec.push_back(operand);
                     operationVec.push_back(operation);
                     labelVec.push_back(label);
-                    commentVec.push_back(instruction.getComment());
+                    commentVec.push_back(comment);
                     intermediateFile.push_back(line);
                     errorMessageArr.push_back(errorMessage);
                     locctrArr.push_back(locctr);
@@ -209,7 +206,11 @@ void Controller :: start()
                 if(symTab.containSymbol(&label)){
                     errorMessage = "duplicated label in symbol table";
                 } else{
-                    symTab.addSymbol(&label, locctr, operation == "EQU");
+                    if(opTable.contains(label) || dirs.contains(label)) {
+                        errorMessage = "Label cannot be Mnemonic";
+                    } else {
+                        symTab.addSymbol(&label, locctr, operation == "EQU");
+                    }
                 }
             }
 
@@ -253,21 +254,44 @@ void Controller :: start()
             } else if (operation == "BASE") {
                 baseFound = true;
             }
+            if(format == 4){
+                locctr += 4;
+                operationVec.push_back("+" +operation);
+
+            } else{
+                format = opTable.getFormat(operation);
+                locctr += format;
+               operationVec.push_back(operation);
+
+            }
+
+            operandVec.push_back(operand);
+            labelVec.push_back(label);
+            commentVec.push_back(comment);
+            intermediateFile.push_back(line);
+            errorMessageArr.push_back(errorMessage);
+            locctrArr.push_back(locctr);
+
+            fileIterator ++;
+            if(fileIterator == input.size()) {
+               break;
+            }
+        } else {
+            operationVec.push_back("");
+            operandVec.push_back("");
+            labelVec.push_back("");
+            commentVec.push_back(comment);
+            intermediateFile.push_back("");
+            errorMessageArr.push_back("");
+            locctrArr.push_back(locctr);
+
+            fileIterator ++;
+            if(fileIterator == input.size()) {
+               break;
+            }
         }
 
         //handle if endBase = false; then error in line of base or load base
-        operandVec.push_back(operand);
-        operationVec.push_back(operation);
-        labelVec.push_back(label);
-        commentVec.push_back(instruction.getComment());
-        intermediateFile.push_back(line);
-        errorMessageArr.push_back(errorMessage);
-        locctrArr.push_back(locctr);
-
-        fileIterator ++;
-        if(fileIterator == input.size()) {
-           break;
-        }
     }
 
     if(baseFound && !endBaseFound){
@@ -295,6 +319,8 @@ void Controller :: start()
             }
         }
     }
+    errorMessageArr.push_back(errorMessage);
+
     if(!ltorgFound){
         litTab.assignAddress(locctr);
     }
@@ -303,13 +329,13 @@ void Controller :: start()
         operandVec.push_back(operand);
         operationVec.push_back(operation);
         labelVec.push_back(label);
-        commentVec.push_back(instruction.getComment());
+        commentVec.push_back(comment);
         intermediateFile.push_back(line);
         errorMessageArr.push_back(errorMessage);
         locctrArr.push_back(locctr);
     }
 
-    file.writeFile(labelVec, operationVec, operandVec, commentVec, errorMessageArr, locctrArr, "trial.txt");
+    file.writeFile(labelVec, operationVec, operandVec, commentVec, errorMessageArr, locctrArr, "pass1.txt");
     symTab.printSymbolTable();
     litTab.printLiteralTable();
 

@@ -1,8 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include <vector>
-#include <inOutFile.h>
-#include <LitTable.h>
+#include "inOutFile.h"
+#include "LitTable.h"
 
 class Controller
 {
@@ -31,7 +31,7 @@ class Controller
         static const int TYPE_EXPRESSION = 14;//R
         int locctr;
         Controller();
-        void start();
+        void start(string fileName);
 
     private:
         void toUpper(string*);

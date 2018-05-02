@@ -31,14 +31,19 @@ void inOutFile::writeFile(vector<string> label,vector<string> operation, vector<
      out << setw(10) << left << "Line" << setw(10) << left << "Address"<< setw(10) << left <<"Label";
       out << setw(15) << left << "Operation" << setw(10) << left << "Operand";
        out << setw(10) << left << "Comment" << setw(10) << left << endl;
+    cout <<line_count;
     for( std::size_t i = 0; i < line_count; ++i ) {
         string locctr = convert.convertToHexa(locctrArr[i]);
         int line = i+1;
+        if (label[i] == "" && operation[i]== "" && operand[i] == "" && comment[i] != "") {
+           out << setw(10) << left << line << setw(10) << left << locctr << setw(10) << left << comment[i]<<endl;
+           continue;
+        }
         out << setw(10) << left << line << setw(10) << left << locctr << setw(10) << left << label[i];
       out << setw(15) << left << operation[i] << setw(10) << left << operand[i];
        out << setw(10) << left << comment[i] << setw(10) << left << endl;
         if (errorMessageArr[i].length() > 2) {
-        out << setw(10) << left << " " << errorMessageArr[i] << setw(10) << left <<endl;
+        out << setw(10) << left << " ***** Error:" << errorMessageArr[i] << setw(10) << left <<endl;
         }
     }
     out.close();
