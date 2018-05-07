@@ -15,32 +15,28 @@
 
 using namespace std;
 
-
-
-Controller::Controller()
-{
-
-}
 void Controller :: start(string fileName)
 {
-    std::vector<std::string> errorMessageArr;
-    std::vector<int> locctrArr;
-    std::vector<std::string> operandVec;
-    std::vector<std::string> operationVec;
-    std::vector<std::string> labelVec;
-    std::vector<std::string> commentVec;
 
-    int locctr = 0;
-    LitTable litTab = LitTable();
-    inOutFile file = inOutFile();
-    std::vector<std::string> input = file.readFile(fileName);
-    std::vector<std::string> intermediateFile;
-    OperandValidator opValid = OperandValidator();
-    DirectiveTable dirs;
-    dirs.getInstance();
-    OperationTable opTable;
-    opTable.getInstance();
-    SymbolTable symTab;
+        LitTable litTab = LitTable();;
+        std::vector<std::string> errorMessageArr;
+        std::vector<int> locctrArr;
+        std::vector<std::string> operandVec;
+        std::vector<std::string> operationVec;
+        std::vector<std::string> labelVec;
+        std::vector<std::string> commentVec;
+
+        inOutFile file = inOutFile();
+        std::vector<std::string> input = file.readFile(fileName);
+        std::vector<std::string> intermediateFile;
+        OperandValidator opValid = OperandValidator();
+        DirectiveTable dirs;
+        dirs.getInstance();
+        OperationTable opTable;
+        SymbolTable symTab;
+        opTable.getInstance();
+        int locctr = 0;
+
 
     /**/
     int startingAdrr = 0;
@@ -242,7 +238,7 @@ void Controller :: start(string fileName)
                     || operandType == TYPE_SYMBOL_OPERAND)
                     && !symTab.containSymbol(&operand)) {
                         errorMessage = "label is not defined before EQU";
-                } else if (operandType == TYPE_EXPRESSION){
+                } else if (operandType == TYPE_SIMPLE_EXPRESSION){
                     string symbolFromExp = getSymbol(operand);
                     if (!symTab.containSymbol(&symbolFromExp)) {
                         errorMessage = "label is not defined before EQU";

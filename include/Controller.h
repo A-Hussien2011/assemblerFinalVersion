@@ -3,6 +3,10 @@
 #include <vector>
 #include "inOutFile.h"
 #include "LitTable.h"
+#include "SymbolTable.h"
+#include "OperationTable.h"
+#include "DirectiveTable.h"
+#include "OperandValidator.h"
 
 class Controller
 {
@@ -28,9 +32,8 @@ class Controller
         static const int TYPE_WORD_OPERAND = 11; //A
         static const int TYPE_REGISTER_TO_REGISTER = 12; //R
         static const int TYPE_LOCCTR = 13;//R
-        static const int TYPE_EXPRESSION = 14;//R
+        static const int TYPE_SIMPLE_EXPRESSION = 14;//R
         int locctr;
-        Controller();
         void start(string fileName);
 
     private:
@@ -40,7 +43,7 @@ class Controller
         bool endBaseFound = false;
         bool ltorgFound = false;
         bool endFound = false;
-        LitTable litTab;
+
 };
 
 #endif // CONTROLLER_H

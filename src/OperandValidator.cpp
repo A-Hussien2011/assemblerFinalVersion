@@ -72,14 +72,23 @@ int OperandValidator::getOperandType(string operand) {
         return TYPE_REGISTER_TO_REGISTER;
     }
 
-    operandTypeRegex = regex(REGEX_EXPRESSION);
+    operandTypeRegex = regex(REGEX_SIMPLE_EXPRESSION1);
     if (regex_match(operand, operandTypeRegex)) {
-        return TYPE_EXPRESSION;
+        return TYPE_SIMPLE_EXPRESSION;
+    }
+    operandTypeRegex = regex(REGEX_SIMPLE_EXPRESSION2);
+    if (regex_match(operand, operandTypeRegex)) {
+        return TYPE_SIMPLE_EXPRESSION;
     }
 
     operandTypeRegex = regex(REGEX_SYMBOL_OPERAND);
     if (regex_match(operand, operandTypeRegex)) {
         return TYPE_SYMBOL_OPERAND;
+    }
+
+    operandTypeRegex = regex(REGEX_COMPLEX_EXPRESSION);
+    if (regex_match(operand, operandTypeRegex)) {
+        return TYPE_COMPLEX_EXPRESSION;
     }
 
     if (operand == "*") {
