@@ -205,7 +205,7 @@ void Controller :: start(string fileName)
                     if(opTable.contains(label) || dirs.contains(label)) {
                         errorMessage = "Label cannot be Mnemonic";
                     } else {
-                        symTab.addSymbol(&label, locctr, operation == "EQU");
+                        symTab.addSymbol(&label, locctr, (operation == "EQU") ? 'U':'R');
                     }
                 }
             }

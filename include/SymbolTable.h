@@ -15,14 +15,14 @@ class SymbolTable
         /*add symbol [name, address, type]
         return error if exists
         */
-        void addSymbol(string*, int, bool);
+        void addSymbol(string*, int, char);
         //edit symbol address, type
-        void modifySymbol(string*, int, bool);
+        void modifySymbol(string*, int, char);
         //check if symbol exists
         bool containSymbol(string*);
 
         int getSymbolAddress(string*);
-        bool getSymbolType(string*);
+        char getSymbolType(string*);
         int getSymbolLength(string*);
         void printSymbolTable();
 
@@ -33,7 +33,7 @@ class SymbolTable
         //info about the symbol
         struct symbol_info {
             int address;
-            bool type;
+            char type;
             int length;
         };
         //map that stores the symbols

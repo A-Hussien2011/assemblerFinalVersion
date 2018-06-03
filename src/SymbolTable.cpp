@@ -11,7 +11,7 @@ using namespace std;
 
     }
 
-    void SymbolTable::addSymbol(string* symbolName, int symbolAddress, bool symbolType) {
+    void SymbolTable::addSymbol(string* symbolName, int symbolAddress, char symbolType) {
         toUpper(symbolName);
         symbol_info symbolInfo;
         symbolInfo.address = symbolAddress;
@@ -46,7 +46,7 @@ using namespace std;
         }
         return -1;
     }
-    bool SymbolTable::getSymbolType(string* symbolName) {
+    char SymbolTable::getSymbolType(string* symbolName) {
         toUpper(symbolName);
         symbol_table_iterator = symbol_table.find(*symbolName);
         return symbol_table_iterator->second.type;
