@@ -20,11 +20,13 @@ class LitTable
         string getValue(string);
         bool contain(string);
         void printLiteralTable();
+        string getAscii(char);
+
    private:
        string literalValue;
        inOutFile file;
         int litLength(string);
-        //info about the literals
+
         struct literal_info {
             int address;
             int length;
@@ -37,7 +39,6 @@ class LitTable
 
         string litValue(string, int);
         int getIncrValue (string);
-        string getAscii(char);
         string convertCharToString(char [], int);
         string convertToHexa(int);
         unordered_map<char ,string> hashtable;
