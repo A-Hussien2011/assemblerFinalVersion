@@ -35,6 +35,7 @@ class Controller
         static const int TYPE_SIMPLE_EXPRESSION = 14;//R
         int locctr;
         void start(string fileName);
+        SymbolTable symTab;
 
     private:
         void toUpper(string*);
@@ -43,6 +44,7 @@ class Controller
         bool endBaseFound = false;
         bool ltorgFound = false;
         bool endFound = false;
+        char evaluateType(string, string, int);
 
 };
 
