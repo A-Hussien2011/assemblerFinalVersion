@@ -15,7 +15,7 @@ class OperandIdentifiers
         bool getNflag();
         bool getIflag();
         bool getXflag();
-        string getDispalcement();
+        string getAddress();
         bool isValidExpression();
         bool isSymbolFound();
 

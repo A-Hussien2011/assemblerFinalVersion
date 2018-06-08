@@ -125,7 +125,7 @@ void OperandIdentifiers::setSymbolFound() {
     symbolFound = false;
 }
 
-string OperandIdentifiers::getDispalcement(){
+string OperandIdentifiers::getAddress(){
 
     if (type == TYPE_SYMBOL_OPERAND || type == TYPE_IMMEDITAE_SYMBOL
         || type == TYPE_INDIRECT_SYMBOL || type == TYPE_INDEXED_SYMBOL
