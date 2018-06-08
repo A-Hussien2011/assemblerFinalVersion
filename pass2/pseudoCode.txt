@@ -38,6 +38,9 @@ if (format = 2) {
 	if ((operandType = symbol, indexed symbol, immediate symbol, indirect symbol, simple expression, complex expression) 
 			&& symbolTable.getSymbolType(operand) == 'U') {
 			setSymbolType(operand); //this method is in a folder called 'methods to be put in contorller'
+			if (symbolTable.getSymbolType(operand) == 'U') {
+				//error in line (when a symbol type is undefined then it has an undefined symbol in its expression
+			}
 	}
 	identify.setOperand(operand);
 	string address = identify.getAddress();
