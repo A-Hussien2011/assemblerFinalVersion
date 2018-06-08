@@ -16,6 +16,7 @@ using namespace std;
         litInfo.value = litValue(litName, type);
         int literalLength = litLength(litName);
         litInfo.length = literalLength;
+        litInfo.label ='*';
         literal_table[litName] = litInfo;
     }
 

@@ -29,6 +29,7 @@ class LitTable
         int litLength(string);
 
         struct literal_info {
+            char label;
             int address;
             int length;
             string value;
