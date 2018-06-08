@@ -52,7 +52,7 @@ using namespace std;
         return symbol_table_iterator->second.type;
     }
 
-    void SymbolTable::modifySymbol(string* symbolName, int symbolAddress, bool symbolType) {
+    void SymbolTable::modifySymbol(string* symbolName, int symbolAddress, char symbolType) {
         toUpper(symbolName);
         symbol_table_iterator = symbol_table.find(*symbolName);
         if (symbol_table_iterator != symbol_table.end()) {

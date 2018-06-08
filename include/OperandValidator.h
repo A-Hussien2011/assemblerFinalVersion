@@ -43,7 +43,7 @@ private :
     const string REGEX_WORD_OPERAND = "^(-?)(\\d)+";
     const string REGEX_REGISTER_TO_REGISTER = "^(A|X|L|B|S|T|F),(A|X|L|B|S|T|F)$";
     const string REGEX_SIMPLE_EXPRESSION1 = REGEX_SYMBOL_OPERAND + "(\\+|-)(\\d)+";
-    const string REGEX_SIMPLE_EXPRESSION2 = "^(\\d)+(\\+|-)([a-zA-Z])+([a-zA-Z0-9\\$])*)";
+    const string REGEX_SIMPLE_EXPRESSION2 = "^(\\d)+(\\+|-)([a-zA-Z])+([a-zA-Z0-9\\$])*";
     const string REGEX_COMPLEX_EXPRESSION = "(([a-zA-Z])+([a-zA-Z0-9\\$])*)(\\+|-)(([a-zA-Z])+([a-zA-Z0-9\\$])*)";
 
 

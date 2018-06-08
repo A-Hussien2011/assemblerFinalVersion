@@ -21,6 +21,7 @@ class LitTable
         bool contain(string);
         void printLiteralTable();
         string getAscii(char);
+        int getAddress(string);
 
    private:
        string literalValue;
@@ -42,7 +43,6 @@ class LitTable
         string convertCharToString(char [], int);
         string convertToHexa(int);
         unordered_map<char ,string> hashtable;
-        int getAddress(string);
         int convertToBin(int);
         Converters convert;
 

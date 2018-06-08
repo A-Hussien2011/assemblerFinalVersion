@@ -401,11 +401,11 @@ char Controller::evaluateType(string operation, string operand, int type){
         string operand1 = operand.substr(sign + 1, operand.length() - sign - 1);
         string operand2 = operand.substr(0, sign);
         if ((symTab.getSymbolType(&operand1)=='A' && symTab.getSymbolType(&operand2) == 'A')
-            || (symTab.getSymbolType(&operand1) == 'R' && symTab.getSymbolType(&operand2) == 'R')) {
-            return 'R'
-        } else if ((symTab.getSymbolType(&operand1) == 'A' && symTab.getSymbolType(&operand2) == 'R')
-                   || (symTab.getSymbolType(&operand1) =='R' && symTab.getSymbolType(&operand2) == 'A')) {
+            || (symTab.getSymbolType(&operand1) == 'R' && symTab.getSymbolType(&operand2) == 'R' && sign == '-')) {
             return 'A';
+        } else if ((symTab.getSymbolType(&operand1) == 'A' && symTab.getSymbolType(&operand2) == 'R' && sign == '+')
+                   || (symTab.getSymbolType(&operand1) =='R' && symTab.getSymbolType(&operand2) == 'A')) {
+            return 'R';
         }
         return 'U';
     }
