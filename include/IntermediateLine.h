@@ -25,15 +25,28 @@ public:
 
     const string &getOperand() const;
 
-    const string &getFormat() const;
+    int getFormat() const;
 
     const string &getIntermediateLine() const;
 
 private:
+
+    const string REGEX_LINE_NUMBER = "(\\d+)";
+    const string REGEX_ADDRESS = "([0-9A-Fa-f]{4})";
+    const string REGEX_LABEL = "([a-zA-Z][\\w]*)*";
+    const string REGEX_OPERATION = "([+]{0,1}[a-zA-Z]{1,5})";
+    const string REGEX_OPERAND = "([=@#]{0,1}[\\w,+\\-*/%']*)*";
+
+    const string REGEX_INTERMEDIATE_LINE = "^\\s*" + REGEX_LINE_NUMBER +
+                                           "\\s+" + REGEX_ADDRESS +
+                                           "\\s+" + REGEX_LABEL +
+                                           "\\s+" + REGEX_OPERATION +
+                                           "\\s+" + REGEX_OPERAND;
+
     string address;
     string operation;
     string operand;
-    string format;
+    int format;
     string intermediateLine;
 
     void setAddress(const string &address);
@@ -42,11 +55,14 @@ private:
 
     void setOperand(const string &operand);
 
-    void setFormat(const string &format);
+    void setFormat(int format);
 
     void setIntermediateLine(const string &intermediateLine);
 
     void parse(string intermediateLine);
+
+    string toUpper(string str);
+
 };
 
 
