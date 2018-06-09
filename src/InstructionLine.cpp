@@ -1,12 +1,11 @@
 //
 // Created by Bassam on 4/21/2018.
-//
 
-#include "InstructionLine.h"
-#include "OperationTable.h"
 #include <regex>
-#include <DirectiveTable.h>
 #include <iostream>
+#include <include/InstructionLine.h>
+#include <include/OperationTable.h>
+#include <include/DirectiveTable.h>
 
 
 InstructionLine::InstructionLine(string instructionLine) {

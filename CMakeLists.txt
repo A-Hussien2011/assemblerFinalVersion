@@ -7,11 +7,6 @@ include_directories(.)
 
 add_executable(pass_1
         main.cpp
-        include/OperationInfomation.h
-        src/OperationTable.cpp
-        include/OperationTable.h
-        src/InstructionLine.cpp
-        include/InstructionLine.h
         src/Controller.cpp
         src/AsciiCode.cpp
         src/Converters.cpp
@@ -21,8 +16,12 @@ add_executable(pass_1
         src/LitTable.cpp
         src/OperandSizeValidator.cpp
         src/OperandValidator.cpp
-        src/OpValidator.cpp
         src/SymbolTable.cpp
+        src/InstructionLine.cpp
+        src/OperationTable.cpp
+        include/OperationInfomation.h
+        include/OperationTable.h
+        include/InstructionLine.h
         include/Controller.h
         include/AsciiCode.h
         include/Converters.h
@@ -32,5 +31,4 @@ add_executable(pass_1
         include/LitTable.h
         include/OperandSizeValidator.h
         include/OperandValidator.h
-        include/OpValidator.h
-        include/SymbolTable.h)
+        include/SymbolTable.h src/IntermediateLine.cpp include/IntermediateLine.h)
