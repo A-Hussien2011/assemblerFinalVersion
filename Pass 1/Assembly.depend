@@ -326,3 +326,164 @@
 	<iostream>
 	"OperationTable.h"
 
+1528556132 source:f:\assemblerfinalversion\pass 1\src\asciicode.cpp
+	"AsciiCode.h"
+
+1528556214 f:\assemblerfinalversion\pass 1\include\asciicode.h
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\controller.cpp
+	<Controller.h>
+	<iostream>
+	<inOutFile.h>
+	<InstructionLine.h>
+	<OperationTable.h>
+	<OperationTable.h>
+	<DirectiveTable.h>
+	<vector>
+	<OperandValidator.h>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+	"fstream"
+
+1528556222 f:\assemblerfinalversion\pass 1\include\controller.h
+	<vector>
+	"inOutFile.h"
+	"LitTable.h"
+	"SymbolTable.h"
+	"OperationTable.h"
+	"DirectiveTable.h"
+	"OperandValidator.h"
+
+1528593305 f:\assemblerfinalversion\pass 1\include\inoutfile.h
+	<vector>
+	<iostream>
+	<LitTable.h>
+
+1528556250 f:\assemblerfinalversion\pass 1\include\littable.h
+	<iostream>
+	<map>
+	<algorithm>
+	<unordered_map>
+	"Converters.h"
+
+1528556230 f:\assemblerfinalversion\pass 1\include\converters.h
+	<iostream>
+
+1528556264 f:\assemblerfinalversion\pass 1\include\symboltable.h
+	<algorithm>
+	<iostream>
+	<map>
+	"inOutFile.h"
+
+1528556262 f:\assemblerfinalversion\pass 1\include\operationtable.h
+	"OperationInfomation.h"
+	<string>
+	<map>
+
+1528556256 f:\assemblerfinalversion\pass 1\include\operationinfomation.h
+	<vector>
+
+1528556236 f:\assemblerfinalversion\pass 1\include\directivetable.h
+	<vector>
+	<string>
+	<algorithm>
+
+1528556254 f:\assemblerfinalversion\pass 1\include\operandvalidator.h
+	<string>
+
+1528556248 f:\assemblerfinalversion\pass 1\include\instructionline.h
+	<string>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\converters.cpp
+	"Converters.h"
+	<iostream>
+	<string.h>
+	<sstream>
+	<iomanip>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\directivetable.cpp
+	"DirectiveTable.h"
+	<iostream>
+	<algorithm>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\grouptable.cpp
+	"GroupTable.h"
+	<algorithm>
+	<iostream>
+	<map>
+
+1528556238 f:\assemblerfinalversion\pass 1\include\grouptable.h
+	<algorithm>
+	<iostream>
+	<map>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\inoutfile.cpp
+	"inOutFile.h"
+	<iostream>
+	"fstream"
+	<vector>
+	"Converters.h"
+	<iomanip>
+	<LitTable.h>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\instructionline.cpp
+	"InstructionLine.h"
+	"OperationTable.h"
+	<regex>
+	<DirectiveTable.h>
+	<iostream>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\littable.cpp
+	"LitTable.h"
+	<iostream>
+	<map>
+	<unordered_map>
+	<algorithm>
+	<bitset>
+	"Converters.h"
+	"inOutFile.h"
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\operandsizevalidator.cpp
+	"OperandSizeValidator.h"
+	<iostream>
+	<vector>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+
+1528556252 f:\assemblerfinalversion\pass 1\include\operandsizevalidator.h
+	<string>
+
+1528556132 source:f:\assemblerfinalversion\pass 1\src\operandvalidator.cpp
+	<OperandValidator.h>
+	<string>
+	<iostream>
+	<stdio.h>
+	<regex>
+
+1528556134 source:f:\assemblerfinalversion\pass 1\src\operationtable.cpp
+	<iostream>
+	"OperationTable.h"
+
+1528556136 source:f:\assemblerfinalversion\pass 1\src\symboltable.cpp
+	"SymbolTable.h"
+	<iostream>
+	<map>
+	<algorithm>
+	<vector>
+	"Converters.h"
+	"inOutFile.h"
+
+1528556168 source:f:\assemblerfinalversion\pass 1\main.cpp
+	<iostream>
+	<InstructionLine.h>
+	<Controller.h>
+	<iostream>
+	<map>
+	<algorithm>
+

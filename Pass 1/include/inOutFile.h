@@ -20,7 +20,7 @@ public:
     void static writeSymbolFile(vector<string>, vector<string>,string);
     void static writeLitralFile(vector<string>, vector<string>,
                                 vector<int>, vector<string>,string);
-    void static writeHeaderFile(vector<string>, string, string, string)
+    void static writeHeaderFile(vector<string>, string, string, string);
 };
 
 

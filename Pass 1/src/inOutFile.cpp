@@ -88,7 +88,7 @@ void inOutFile::writeLitralFile(vector<string> name, vector<string> value,
 
 void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, string length, string name){
     ofstream file;
-    converter = Converters();
+    Converters converter = Converters();
     file.open ("objectCode.txt");
     std::size_t counter = objectCode.size();
     string textStartAddress = startAddress;
@@ -109,5 +109,5 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
     }
     file << "E";
     file << startAddress;
-    myfile.close();
+    file.close();
 }
