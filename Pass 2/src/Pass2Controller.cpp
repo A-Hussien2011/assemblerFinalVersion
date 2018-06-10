@@ -29,18 +29,24 @@ void Pass2Controller::generateObjectCode() {
     LitTable litTab = controller.getLitTable();
     std::vector<std::string> input = file.readFile("pass1.txt");
     IntermediateLine currentLine = IntermediateLine (input[fileIterator]);
+    fileIterator++;
     IntermediateLine nextLine = IntermediateLine (input[fileIterator]);
-    cout << currentLine.getIntermediateLine();
     string start = currentLine.getAddress();
     string base = currentLine.getAddress();
     string progName = currentLine.getLabel();
     OperandIdentifiers operandIdentifiers = OperandIdentifiers(symbTab, litTab);
     displacementController = DisplacementController();
-    int opType = OpValidator.getOperandType(currentLine.getOperand());
-    operandIdentifiers.setOperand(currentLine.getOperand());
+
+
+    fileIterator++;
+    currentLine.setIntermediateLine(nextLine.getIntermediateLine());
+    nextLine.setIntermediateLine(input[fileIterator]);
+
     while(fileIterator !=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
+        int opType = OpValidator.getOperandType(currentLine.getOperand());
+
         if (currentLine.getOperation() == "BYTE") {
             objectCodeArr.push_back(getByteObjectCode(operand));
         } else if (currentLine.getOperation() == "WORD") {
@@ -53,7 +59,7 @@ void Pass2Controller::generateObjectCode() {
                  opType == TYPE_COMPLEX_EXPRESSION) && symbTab.getSymbolType(&operand) == 'U') {
                       	setSymbolType(operation, operand, opType, symbTab);
                 if (symbTab.getSymbolType(&operand) == 'U') {
-                        //error in line msh 3arfa hyt3ml ezay hna
+                    cout<<"operand expression in undefined"<<endl;
                 }
         } else {
             if (currentLine.getOperation() == "NOBASE") {
@@ -61,12 +67,14 @@ void Pass2Controller::generateObjectCode() {
             } else if (currentLine.getOperation() == "BASE") {
                 base = currentLine.getAddress();
             }
+
+            operandIdentifiers.setOperand(currentLine.getOperand());
             address = operandIdentifiers.getAddress();
             if (address == "") {
                 if (!operandIdentifiers.isValidExpression()) {
-                //then write error msg the expression is invalid
+                    cout<<"In valid expression"<<endl;
                 } else {
-                    //then symbol is not found in table error msg
+                    cout<<"Symbol not found"<<endl;
                 }
             } else {
 

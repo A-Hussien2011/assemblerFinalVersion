@@ -7,4 +7,5 @@ int main()
     Pass2Controller pass2 = Pass2Controller();
     pass2.generateIntermediateFile("Reader.txt");
     pass2.generateObjectCode();
+    pass2.generateFinalFile("0000", "PROG");
 }
