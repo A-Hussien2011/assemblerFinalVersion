@@ -1,5 +1,0 @@
- SYMBOL TABLE
-Name      Address   
-PROG      0000      
-PJ        0006      
-ALPHA     0009      

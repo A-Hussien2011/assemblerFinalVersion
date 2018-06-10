@@ -1,0 +1,11 @@
+                          PASS 1 
+Line      Address   Label     Operation      Operand   Comment   
+1         0000      .123456789
+2         0000      PROG      START          00                  
+3         0000                LDA            =c'eof'             
+4         0003                LDT            =w'12'              
+5         0006      PJ        WORD           5                   
+6         0009      ALPHA     BYTE           c'gt'               
+7         000B                END                                
+8         000B      *         =c'eof'        656F66    
+9         000E      *         =w'12'         C         
