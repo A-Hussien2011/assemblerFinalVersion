@@ -19,15 +19,17 @@ class Pass2Controller
         void generateIntermediateFile(string);
         void generateObjectCode();
         void generateFinalFile(string, string);
+        Format format;
+        std::vector<std::string> objectCodeArr;
+        string endStartingAddress;
 
     private:
         DisplacementController displacementController;
-        Format format;
+
         Controller controller;
         inOutFile file;
         Converters converter;
         OperandValidator OpValidator;
-        vector< string > objectCodeArr;
         string getLength();
         string getLiteralObjectCode(string, LitTable);
         string getWordObjectCode(string);
