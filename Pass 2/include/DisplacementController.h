@@ -17,7 +17,7 @@ class DisplacementController
         void setValidBase(bool);
         void setDispalcement(string, string, string, string, string, int);
         bool validBase;
-        string convertToBin(int);
+        string convertToBin(int, int);
         int addBinary(string, string);
     private:
         RegistersTable registersTable;

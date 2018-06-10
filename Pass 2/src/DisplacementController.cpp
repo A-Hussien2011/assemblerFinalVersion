@@ -16,20 +16,21 @@ void DisplacementController::setDispalcement(string address, string operation, s
         setEflag(true);
         setBflag(true);
         setPCflag(true);
-        displacement = "0" + address;
-        displacement = convertToBin(strtol(displacement.c_str(), NULL, 16));
+        displacement = bitset<20>(strtol(address.c_str(), NULL, 16)).to_string();
     } else if (type != NO_FORMAT){
         setEflag(false);
         if (type == FORMAT_3) {
             calculateDisp(address, pc, base);
-            displacement = convertToBin(strtol(displacement.c_str(), NULL, 16));
+            displacement = bitset<12>(strtol(displacement.c_str(), NULL, 16)).to_string();
         } else if (type == FORMAT_2) {
             string reg1 = "";
             reg1 += operand.at(0);
             string reg2 = "";
             reg2 += operand.at(2);
-            displacement = convertToBin(registersTable.getRegisterNumber(reg1))
-                        + convertToBin(registersTable.getRegisterNumber(reg2));
+
+            string r1 = bitset<4>(registersTable.getRegisterNumber(reg1)).to_string();
+            string r2 = bitset<4>(registersTable.getRegisterNumber(reg2)).to_string();
+            displacement = r1+r2;
         }
     } else {
         displacement = "";
@@ -46,7 +47,7 @@ void DisplacementController::calculateDisp(string address, string pc, string bas
     int result = intAddress - intPc;
     if (result < 0) {
         result = result * -1;
-        result = addBinary(convertToBin(result), "1");
+        result = addBinary(convertToBin(result,12), "1");
     }
     if (result >= -2048 && result <= 2047) {
         setPCflag(true);
@@ -57,7 +58,7 @@ void DisplacementController::calculateDisp(string address, string pc, string bas
         result = intAddress - intBase;
         if (result < 0) {
         result = result * -1;
-        result = addBinary(convertToBin(result), "1");
+        result = addBinary(convertToBin(result,12), "1");
     }
         if (result >= 0 && result <= 4095){
             setPCflag(false);
@@ -100,10 +101,16 @@ int DisplacementController::addBinary(string a, string b)
     return value;
 }
 
-string DisplacementController::convertToBin(int value) {
-         string str = bitset<16>(value).to_string();
+string DisplacementController::convertToBin(int value, int bitsNumber) {
+        string str;
+        if (bitsNumber == 20) {
+            str = bitset<20>(value).to_string();
+        } else {
+            str = bitset<12>(value).to_string();
+        }
+
         int i;
-        char s[17];
+        char s[bitsNumber + 1];
         for (i = 0; i < str.length(); i++) {
             if(str.at(i) == '0') {
                 s[i] = '1';
