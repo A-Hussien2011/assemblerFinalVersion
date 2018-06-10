@@ -109,5 +109,5 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
     }
     file << "E";
     file << startAddress;
-    myfile.close();
+    file.close();
 }

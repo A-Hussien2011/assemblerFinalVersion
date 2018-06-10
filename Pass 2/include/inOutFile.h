@@ -4,7 +4,7 @@
 
 #ifndef PASS1_INOUTFILE_H
 #define PASS1_INOUTFILE_H
-
+#include "Converters.h"
 #include <vector>
 #include <iostream>
 #include<LitTable.h>
@@ -20,7 +20,10 @@ public:
     void static writeSymbolFile(vector<string>, vector<string>,string);
     void static writeLitralFile(vector<string>, vector<string>,
                                 vector<int>, vector<string>,string);
-    void static writeHeaderFile(vector<string>, string, string, string);
+    void writeHeaderFile(vector<string>, string, string, string);
+
+    private:
+    Converters converter;
 };
 
 

@@ -3,9 +3,9 @@
 //
 
 #include <regex>
-#include <include/OperationTable.h>
-#include <include/DirectiveTable.h>
-#include "include/IntermediateLine.h"
+#include <OperationTable.h>
+#include <DirectiveTable.h>
+#include "IntermediateLine.h"
 
 
 IntermediateLine::IntermediateLine(string intermediateLine) {

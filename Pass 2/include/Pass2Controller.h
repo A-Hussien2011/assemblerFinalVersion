@@ -6,9 +6,11 @@
 #include "DisplacementController.h"
 #include "Format.h"
 #include "Controller.h"
-#include "include/IntermediateLine.h"
+#include "IntermediateLine.h"
 #include "inOutFile.h"
 #include "Converters.h"
+#include <OperandValidator.h>
+
 
 class Pass2Controller
 {
@@ -16,6 +18,7 @@ class Pass2Controller
         Pass2Controller();
         void generateIntermediateFile(string);
         void generateObjectCode();
+        void generateFinalFile();
 
     private:
         OperandIdentifiers operandIdentifiers;
@@ -26,6 +29,7 @@ class Pass2Controller
         IntermediateLine nextLine;
         inOutFile file;
         Converters converter;
+        OperandValidator OpValidator;
         vector< string > objectCodeArr;
         string getLength();
         string getLiteralObjectCode(string);

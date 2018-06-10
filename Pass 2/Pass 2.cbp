@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -33,10 +35,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Controller.h" />
 		<Unit filename="include/Converters.h" />
 		<Unit filename="include/DirectiveTable.h" />
 		<Unit filename="include/DisplacementController.h" />
 		<Unit filename="include/Format.h" />
+		<Unit filename="include/InstructionLine.h" />
 		<Unit filename="include/IntermediateLine.h" />
 		<Unit filename="include/LitTable.h" />
 		<Unit filename="include/OperandIdentifiers.h" />
@@ -49,10 +53,12 @@
 		<Unit filename="include/SymbolTable.h" />
 		<Unit filename="include/inOutFile.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Controller.cpp" />
 		<Unit filename="src/Converters.cpp" />
 		<Unit filename="src/DirectiveTable.cpp" />
 		<Unit filename="src/DisplacementController.cpp" />
 		<Unit filename="src/Format.cpp" />
+		<Unit filename="src/InstructionLine.cpp" />
 		<Unit filename="src/IntermediateLine.cpp" />
 		<Unit filename="src/LitTable.cpp" />
 		<Unit filename="src/OperandIdentifiers.cpp" />
@@ -63,7 +69,6 @@
 		<Unit filename="src/RegistersTable.cpp" />
 		<Unit filename="src/SymbolTable.cpp" />
 		<Unit filename="src/inOutFile.cpp" />
-		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

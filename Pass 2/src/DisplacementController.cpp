@@ -3,28 +3,15 @@
 #include <algorithm>
 #include <bitset>
 #include <string>
-#include "InstructionLine.h"
-#include "OperationTable.h"
 #include "RegistersTable.h"
 #include "Converters.h"
 
-DisplacementController::DisplacementController(OperandIdentifiers OperandIdent)
-{
-    operandIdentifiers = OperandIdent();
-    opTable = OperationTable();
+DisplacementController::DisplacementController() {
     converter = Converters();
     validBase = true;
 }
 
-void DisplacementController::setDispalcement(string operation, string operand, string pc, string base, int type) {
-    string address = operandIdentifiers.getAddress();
-    if (address == "") {
-        if (!operandIdentifiers.isValidExpression()) {
-			//then write error msg the expression is invalid
-		} else {
-			//then symbol is not found in table error msg
-		}
-    } else {
+void DisplacementController::setDispalcement(string address, string operation, string operand, string pc, string base, int type) {
     if (type == FORMAT_4) {
         setEflag(true);
         setBflag(true);
@@ -37,8 +24,12 @@ void DisplacementController::setDispalcement(string operation, string operand, s
             displacement = calculateDisp(address, pc, base);
             displacement = convertToBin(strtol(displacement.c_str(), NULL, 16));
         } else if (type == FORMAT_2) {
-            displacement = convertToBin(registersTable.getRegisterNumber(operand.at(0)))
-                        + convertToBin(registersTable.getRegisterNumber(operand.at(2)));
+            string reg1 = "";
+            reg1 += operand.at(0);
+            string reg2 = "";
+            reg2 += operand.at(2);
+            displacement = convertToBin(registersTable.getRegisterNumber(reg1))
+                        + convertToBin(registersTable.getRegisterNumber(reg2));
         }
     } else {
         displacement = "";
@@ -46,7 +37,7 @@ void DisplacementController::setDispalcement(string operation, string operand, s
             setBflag(false);
             setEflag(false);
     }
-    }
+
 }
 
 string DisplacementController::calculateDisp(string address, string pc, string base) {

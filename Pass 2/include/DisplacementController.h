@@ -4,24 +4,19 @@
 #include <algorithm>
 #include <bitset>
 #include <string>
-#include "InstructionLine.h"
-#include "OperationTable.h"
 #include "RegistersTable.h"
 #include "Converters.h"
 
 class DisplacementController
 {
     public:
-        DisplacementController(OperandIdentifiers);
+        DisplacementController();
         bool getPCflag();
         bool getBflag();
         string getDispalcement();
         void setValidBase(bool);
-        void setDispalcement(string, string, string, string, int);
+        void setDispalcement(string, string, string, string, string, int);
     private:
-        OperandIdentifiers OperandIdent;
-        InstructionLine InstLine;
-        OperationTable OpTable;
         RegistersTable registersTable;
         Converters converter;
 

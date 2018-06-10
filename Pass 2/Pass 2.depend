@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1446667744 source:c:\users\personal\desktop\pass 2\main.cpp
+1528616074 source:c:\users\personal\desktop\pass 2\main.cpp
 	<iostream>
 
 1528590573 source:c:\users\personal\desktop\pass 2\src\converters.cpp
@@ -21,4 +21,184 @@
 	<vector>
 	<string>
 	<algorithm>
+
+1528615738 source:c:\users\personal\desktop\pass 2\src\displacementcontroller.cpp
+	"DisplacementController.h"
+	"OperandIdentifiers.h"
+	<algorithm>
+	<bitset>
+	<string>
+	"RegistersTable.h"
+	"Converters.h"
+
+1528615775 c:\users\personal\desktop\pass 2\include\displacementcontroller.h
+	"OperandIdentifiers.h"
+	<algorithm>
+	<bitset>
+	<string>
+	"RegistersTable.h"
+	"Converters.h"
+
+1528490805 c:\users\personal\desktop\pass 2\include\operandidentifiers.h
+	"OperandValidator.h"
+	"SymbolTable.h"
+	"LitTable.h"
+	<string>
+
+1528615735 c:\users\personal\desktop\pass 2\include\operandvalidator.h
+	<string>
+
+1528031849 c:\users\personal\desktop\pass 2\include\symboltable.h
+	<algorithm>
+	<iostream>
+	<map>
+	"inOutFile.h"
+
+1528615778 c:\users\personal\desktop\pass 2\include\inoutfile.h
+	"Converters.h"
+	<vector>
+	<iostream>
+	<LitTable.h>
+
+1528584542 c:\users\personal\desktop\pass 2\include\littable.h
+	<iostream>
+	<map>
+	<algorithm>
+	<unordered_map>
+	"Converters.h"
+
+1528453410 c:\users\personal\desktop\pass 2\include\registerstable.h
+	<algorithm>
+	<iostream>
+	<map>
+	"inOutFile.h"
+
+1528552579 source:c:\users\personal\desktop\pass 2\src\format.cpp
+	"Format.h"
+	<sstream>
+	<bitset>
+	<string>
+
+1528551697 c:\users\personal\desktop\pass 2\include\format.h
+	<string>
+	<sstream>
+	<bitset>
+
+1528615743 source:c:\users\personal\desktop\pass 2\src\inoutfile.cpp
+	"inOutFile.h"
+	<iostream>
+	"fstream"
+	<vector>
+	"Converters.h"
+	<iomanip>
+	<LitTable.h>
+
+1525097960 source:c:\users\personal\desktop\pass 2\src\instructionline.cpp
+	"InstructionLine.h"
+	"OperationTable.h"
+	<regex>
+	<DirectiveTable.h>
+	<iostream>
+
+1525096059 c:\users\personal\desktop\pass 2\include\instructionline.h
+	<string>
+
+1524960082 c:\users\personal\desktop\pass 2\include\operationtable.h
+	"OperationInfomation.h"
+	<string>
+	<map>
+
+1524960082 c:\users\personal\desktop\pass 2\include\operationinfomation.h
+	<vector>
+
+1528617044 source:c:\users\personal\desktop\pass 2\src\intermediateline.cpp
+	<regex>
+	<OperationTable.h>
+	<DirectiveTable.h>
+	"IntermediateLine.h"
+
+1528617042 c:\users\personal\desktop\pass 2\include\intermediateline.h
+	<string>
+
+1528585771 source:c:\users\personal\desktop\pass 2\src\littable.cpp
+	"LitTable.h"
+	<iostream>
+	<map>
+	<unordered_map>
+	<algorithm>
+	<bitset>
+	"Converters.h"
+	"inOutFile.h"
+
+1446667744 source:c:\users\personal\desktop\pass 2\src\main.cpp
+	<iostream>
+
+1528490800 source:c:\users\personal\desktop\pass 2\src\operandidentifiers.cpp
+	"OperandIdentifiers.h"
+	<string>
+	"OperandValidator.h"
+	"SymbolTable.h"
+	"LitTable.h"
+
+1524959810 source:c:\users\personal\desktop\pass 2\src\operandsizevalidator.cpp
+	"OperandSizeValidator.h"
+	<iostream>
+	<vector>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+
+1524959810 c:\users\personal\desktop\pass 2\include\operandsizevalidator.h
+	<string>
+
+1528615760 source:c:\users\personal\desktop\pass 2\src\operandvalidator.cpp
+	<OperandValidator.h>
+	<string>
+	<iostream>
+	<stdio.h>
+	<regex>
+
+1528581387 source:c:\users\personal\desktop\pass 2\src\operationtable.cpp
+	<iostream>
+	"OperationTable.h"
+
+1528617123 source:c:\users\personal\desktop\pass 2\src\controller.cpp
+	<Controller.h>
+	<iostream>
+	<inOutFile.h>
+	<InstructionLine.h>
+	<OperationTable.h>
+	<OperationTable.h>
+	<DirectiveTable.h>
+	<vector>
+	<OperandValidator.h>
+	<SymbolTable.h>
+	<iomanip>
+	<locale>
+	<sstream>
+	<string>
+	"fstream"
+
+1528615770 c:\users\personal\desktop\pass 2\include\controller.h
+	<vector>
+	"inOutFile.h"
+	"LitTable.h"
+	"SymbolTable.h"
+	"OperationTable.h"
+	"DirectiveTable.h"
+	"OperandValidator.h"
+
+1528198877 source:c:\users\personal\desktop\pass 2\src\registerstable.cpp
+	"RegistersTable.h"
+
+1528453468 source:c:\users\personal\desktop\pass 2\src\symboltable.cpp
+	"SymbolTable.h"
+	<iostream>
+	<map>
+	<algorithm>
+	<vector>
+	"Converters.h"
+	"inOutFile.h"
 
