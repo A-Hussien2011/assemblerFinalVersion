@@ -54,11 +54,10 @@ void Pass2Controller::generateObjectCode() {
     currentLine.setIntermediateLine(nextLine.getIntermediateLine());
     nextLine.setIntermediateLine(input[fileIterator]);
 
-    while(fileIterator !=  input.size()) {
+    while(fileIterator <=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
         endingAddress = currentLine.getAddress();
-        cout<<endingAddress<<endl;
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
         }
@@ -116,12 +115,12 @@ void Pass2Controller::generateObjectCode() {
         }
 
         fileIterator++;
-        while(fileIterator !=  input.size() && input[fileIterator].find(".") != std::string::npos){
+        while(fileIterator <  input.size() && input[fileIterator].find(".") != std::string::npos){
             fileIterator ++;
         }
         currentLine.setIntermediateLine(nextLine.getIntermediateLine());
 
-        if (fileIterator !=  input.size()) {
+        if (fileIterator <  input.size()) {
             nextLine.setIntermediateLine(input[fileIterator]);
         }
     }
