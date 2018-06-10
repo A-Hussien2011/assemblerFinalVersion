@@ -31,6 +31,8 @@ public:
 
     const string &getIntermediateLine() const;
 
+    void setIntermediateLine(const string &intermediateLine);
+
 private:
 
     const string REGEX_LINE_NUMBER = "(\\d+)";
@@ -62,7 +64,6 @@ private:
 
     void setFormat(int format);
 
-    void setIntermediateLine(const string &intermediateLine);
 
     void parse(string intermediateLine);
 

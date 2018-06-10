@@ -12,7 +12,6 @@ IntermediateLine::IntermediateLine(string intermediateLine) {
 
     setIntermediateLine(intermediateLine);
 
-    parse(intermediateLine);
 }
 
 void IntermediateLine::parse(string intermediateLine) {
@@ -90,6 +89,7 @@ const string &IntermediateLine::getIntermediateLine() const {
 
 void IntermediateLine::setIntermediateLine(const string &intermediateLine) {
     IntermediateLine::intermediateLine = intermediateLine;
+    parse(intermediateLine);
 }
 
 string IntermediateLine::toUpper(string str) {
@@ -97,5 +97,7 @@ string IntermediateLine::toUpper(string str) {
     return str;
 }
 
-
+const string &IntermediateLine::getLabel() const {
+    return label;
+}
 

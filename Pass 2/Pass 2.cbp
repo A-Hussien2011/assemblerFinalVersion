@@ -51,6 +51,7 @@
 		<Unit filename="include/Pass2Controller.h" />
 		<Unit filename="include/RegistersTable.h" />
 		<Unit filename="include/SymbolTable.h" />
+		<Unit filename="include/TEMP.h" />
 		<Unit filename="include/inOutFile.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Controller.cpp" />
@@ -68,6 +69,7 @@
 		<Unit filename="src/Pass2Controller.cpp" />
 		<Unit filename="src/RegistersTable.cpp" />
 		<Unit filename="src/SymbolTable.cpp" />
+		<Unit filename="src/TEMP.cpp" />
 		<Unit filename="src/inOutFile.cpp" />
 		<Extensions>
 			<code_completion />

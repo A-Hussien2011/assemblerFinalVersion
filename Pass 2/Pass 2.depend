@@ -1,28 +1,29 @@
 # depslib dependency file v1.0
-1528616074 source:c:\users\personal\desktop\pass 2\main.cpp
+1528636901 source:c:\users\personal\desktop\pass 2\main.cpp
 	<iostream>
+	"Pass2Controller.h"
 
-1528590573 source:c:\users\personal\desktop\pass 2\src\converters.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\converters.cpp
 	"Converters.h"
 	<iostream>
 	<string.h>
 	<sstream>
 	<iomanip>
 
-1528590582 c:\users\personal\desktop\pass 2\include\converters.h
+1528618524 c:\users\personal\desktop\pass 2\include\converters.h
 	<iostream>
 
-1524965864 source:c:\users\personal\desktop\pass 2\src\directivetable.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\directivetable.cpp
 	"DirectiveTable.h"
 	<iostream>
 	<algorithm>
 
-1524965862 c:\users\personal\desktop\pass 2\include\directivetable.h
+1528618524 c:\users\personal\desktop\pass 2\include\directivetable.h
 	<vector>
 	<string>
 	<algorithm>
 
-1528615738 source:c:\users\personal\desktop\pass 2\src\displacementcontroller.cpp
+1528636341 source:c:\users\personal\desktop\pass 2\src\displacementcontroller.cpp
 	"DisplacementController.h"
 	"OperandIdentifiers.h"
 	<algorithm>
@@ -31,7 +32,7 @@
 	"RegistersTable.h"
 	"Converters.h"
 
-1528615775 c:\users\personal\desktop\pass 2\include\displacementcontroller.h
+1528631102 c:\users\personal\desktop\pass 2\include\displacementcontroller.h
 	"OperandIdentifiers.h"
 	<algorithm>
 	<bitset>
@@ -39,52 +40,52 @@
 	"RegistersTable.h"
 	"Converters.h"
 
-1528490805 c:\users\personal\desktop\pass 2\include\operandidentifiers.h
+1528618524 c:\users\personal\desktop\pass 2\include\operandidentifiers.h
 	"OperandValidator.h"
 	"SymbolTable.h"
 	"LitTable.h"
 	<string>
 
-1528615735 c:\users\personal\desktop\pass 2\include\operandvalidator.h
+1528618524 c:\users\personal\desktop\pass 2\include\operandvalidator.h
 	<string>
 
-1528031849 c:\users\personal\desktop\pass 2\include\symboltable.h
+1528618524 c:\users\personal\desktop\pass 2\include\symboltable.h
 	<algorithm>
 	<iostream>
 	<map>
 	"inOutFile.h"
 
-1528615778 c:\users\personal\desktop\pass 2\include\inoutfile.h
+1528618524 c:\users\personal\desktop\pass 2\include\inoutfile.h
 	"Converters.h"
 	<vector>
 	<iostream>
 	<LitTable.h>
 
-1528584542 c:\users\personal\desktop\pass 2\include\littable.h
+1528618524 c:\users\personal\desktop\pass 2\include\littable.h
 	<iostream>
 	<map>
 	<algorithm>
 	<unordered_map>
 	"Converters.h"
 
-1528453410 c:\users\personal\desktop\pass 2\include\registerstable.h
+1528618524 c:\users\personal\desktop\pass 2\include\registerstable.h
 	<algorithm>
 	<iostream>
 	<map>
 	"inOutFile.h"
 
-1528552579 source:c:\users\personal\desktop\pass 2\src\format.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\format.cpp
 	"Format.h"
 	<sstream>
 	<bitset>
 	<string>
 
-1528551697 c:\users\personal\desktop\pass 2\include\format.h
+1528618524 c:\users\personal\desktop\pass 2\include\format.h
 	<string>
 	<sstream>
 	<bitset>
 
-1528615743 source:c:\users\personal\desktop\pass 2\src\inoutfile.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\inoutfile.cpp
 	"inOutFile.h"
 	<iostream>
 	"fstream"
@@ -93,34 +94,34 @@
 	<iomanip>
 	<LitTable.h>
 
-1525097960 source:c:\users\personal\desktop\pass 2\src\instructionline.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\instructionline.cpp
 	"InstructionLine.h"
 	"OperationTable.h"
 	<regex>
 	<DirectiveTable.h>
 	<iostream>
 
-1525096059 c:\users\personal\desktop\pass 2\include\instructionline.h
+1528618524 c:\users\personal\desktop\pass 2\include\instructionline.h
 	<string>
 
-1524960082 c:\users\personal\desktop\pass 2\include\operationtable.h
+1528618524 c:\users\personal\desktop\pass 2\include\operationtable.h
 	"OperationInfomation.h"
 	<string>
 	<map>
 
-1524960082 c:\users\personal\desktop\pass 2\include\operationinfomation.h
+1528618524 c:\users\personal\desktop\pass 2\include\operationinfomation.h
 	<vector>
 
-1528617044 source:c:\users\personal\desktop\pass 2\src\intermediateline.cpp
+1528636441 source:c:\users\personal\desktop\pass 2\src\intermediateline.cpp
 	<regex>
 	<OperationTable.h>
 	<DirectiveTable.h>
 	"IntermediateLine.h"
 
-1528617042 c:\users\personal\desktop\pass 2\include\intermediateline.h
+1528635886 c:\users\personal\desktop\pass 2\include\intermediateline.h
 	<string>
 
-1528585771 source:c:\users\personal\desktop\pass 2\src\littable.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\littable.cpp
 	"LitTable.h"
 	<iostream>
 	<map>
@@ -133,14 +134,14 @@
 1446667744 source:c:\users\personal\desktop\pass 2\src\main.cpp
 	<iostream>
 
-1528490800 source:c:\users\personal\desktop\pass 2\src\operandidentifiers.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\operandidentifiers.cpp
 	"OperandIdentifiers.h"
 	<string>
 	"OperandValidator.h"
 	"SymbolTable.h"
 	"LitTable.h"
 
-1524959810 source:c:\users\personal\desktop\pass 2\src\operandsizevalidator.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\operandsizevalidator.cpp
 	"OperandSizeValidator.h"
 	<iostream>
 	<vector>
@@ -150,21 +151,21 @@
 	<sstream>
 	<string>
 
-1524959810 c:\users\personal\desktop\pass 2\include\operandsizevalidator.h
+1528618524 c:\users\personal\desktop\pass 2\include\operandsizevalidator.h
 	<string>
 
-1528615760 source:c:\users\personal\desktop\pass 2\src\operandvalidator.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\operandvalidator.cpp
 	<OperandValidator.h>
 	<string>
 	<iostream>
 	<stdio.h>
 	<regex>
 
-1528581387 source:c:\users\personal\desktop\pass 2\src\operationtable.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\operationtable.cpp
 	<iostream>
 	"OperationTable.h"
 
-1528617123 source:c:\users\personal\desktop\pass 2\src\controller.cpp
+1528629250 source:c:\users\personal\desktop\pass 2\src\controller.cpp
 	<Controller.h>
 	<iostream>
 	<inOutFile.h>
@@ -181,7 +182,7 @@
 	<string>
 	"fstream"
 
-1528615770 c:\users\personal\desktop\pass 2\include\controller.h
+1528629235 c:\users\personal\desktop\pass 2\include\controller.h
 	<vector>
 	"inOutFile.h"
 	"LitTable.h"
@@ -190,10 +191,10 @@
 	"DirectiveTable.h"
 	"OperandValidator.h"
 
-1528198877 source:c:\users\personal\desktop\pass 2\src\registerstable.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\registerstable.cpp
 	"RegistersTable.h"
 
-1528453468 source:c:\users\personal\desktop\pass 2\src\symboltable.cpp
+1528618524 source:c:\users\personal\desktop\pass 2\src\symboltable.cpp
 	"SymbolTable.h"
 	<iostream>
 	<map>
@@ -201,4 +202,34 @@
 	<vector>
 	"Converters.h"
 	"inOutFile.h"
+
+1528637280 source:c:\users\personal\desktop\pass 2\src\pass2controller.cpp
+	"Pass2Controller.h"
+	<vector>
+	<string.h>
+	"OperandIdentifiers.h"
+	"DisplacementController.h"
+	"Format.h"
+	"Controller.h"
+	"IntermediateLine.h"
+	"inOutFile.h"
+	"Converters.h"
+	<OperandValidator.h>
+
+1528632022 c:\users\personal\desktop\pass 2\include\pass2controller.h
+	<vector>
+	<string.h>
+	"OperandIdentifiers.h"
+	"DisplacementController.h"
+	"Format.h"
+	"Controller.h"
+	"IntermediateLine.h"
+	"inOutFile.h"
+	"Converters.h"
+	<OperandValidator.h>
+
+1528594134 source:c:\users\personal\desktop\pass 2\src\temp.cpp
+	"TEMP.h"
+
+1528594134 c:\users\personal\desktop\pass 2\include\temp.h
 

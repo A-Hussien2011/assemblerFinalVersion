@@ -16,6 +16,9 @@ class DisplacementController
         string getDispalcement();
         void setValidBase(bool);
         void setDispalcement(string, string, string, string, string, int);
+        bool validBase;
+        string convertToBin(int);
+        int addBinary(string, string);
     private:
         RegistersTable registersTable;
         Converters converter;
@@ -23,14 +26,11 @@ class DisplacementController
         void setPCflag(bool);
         void setBflag(bool);
         void setEflag(bool);
-        int addBinary(string, string);
-        string convertToBin(int);
         string calculateDisp(string, string, string);
 
         bool PCflag;
         bool Bflag;
         bool Eflag;
-        bool validBase;
         string displacement;
 
         static const int FORMAT_2 = 2;

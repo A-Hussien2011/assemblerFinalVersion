@@ -37,6 +37,9 @@ class Controller
         int locctr;
         void start(string fileName);
         SymbolTable symTab;
+        LitTable litTab;
+        LitTable getLitTable();
+        SymbolTable getSymbolTable();
 
     private:
         void toUpper(string*);

@@ -1,0 +1,6 @@
+prog	start	00
+	lda	=c'eof'
+	ldt	=w'12'
+pj	word	5
+alpha	byte	c'gt'
+	end

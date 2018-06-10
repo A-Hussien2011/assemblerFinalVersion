@@ -19,7 +19,7 @@ using namespace std;
 void Controller :: start(string fileName)
 {
 
-        LitTable litTab = LitTable();;
+        litTab = LitTable();
         std::vector<std::string> errorMessageArr;
         std::vector<int> locctrArr;
         std::vector<std::string> operandVec;
@@ -411,5 +411,13 @@ char Controller::evaluateType(string operation, string operand, int type){
         return 'U';
     }
 
+}
+
+SymbolTable Controller::getSymbolTable(){
+    return symTab;
+}
+
+LitTable Controller::getLitTable () {
+    return litTab;
 }
 

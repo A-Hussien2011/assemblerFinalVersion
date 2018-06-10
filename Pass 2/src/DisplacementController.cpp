@@ -136,3 +136,11 @@ void DisplacementController::setBflag(bool used){
 void DisplacementController::setEflag(bool used){
     Eflag = used;
 }
+
+bool DisplacementController::getPCflag(){
+    return PCflag;
+}
+
+bool DisplacementController::getBflag(){
+    return Bflag;
+}
