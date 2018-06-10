@@ -56,7 +56,7 @@ void Pass2Controller::generateObjectCode() {
         string operation = currentLine.getOperation();
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
-            break;
+            continue;
         }
         else{
             int opType = OpValidator.getOperandType(currentLine.getOperand());
