@@ -40,7 +40,7 @@ void Pass2Controller::generateObjectCode() {
     }
     IntermediateLine nextLine = IntermediateLine (input[fileIterator]);
 
-    string start = currentLine.getAddress();
+    startingAddress = currentLine.getAddress();
     string base = currentLine.getAddress();
     string progName = currentLine.getLabel();
     OperandIdentifiers operandIdentifiers = OperandIdentifiers(symbTab, litTab);
@@ -57,6 +57,8 @@ void Pass2Controller::generateObjectCode() {
     while(fileIterator !=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
+        endingAddress = currentLine.getAddress();
+        cout<<endingAddress<<endl;
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
         }
@@ -95,6 +97,7 @@ void Pass2Controller::generateObjectCode() {
 
                 displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
                                                    , nextLine.getAddress(), base, currentLine.getFormat());
+
                 if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
                     format.setNflag(true);
                     format.setIflag(true);
@@ -102,7 +105,6 @@ void Pass2Controller::generateObjectCode() {
                     format.setNflag(operandIdentifiers.getNflag());
                     format.setIflag(operandIdentifiers.getIflag());
                 }
-
                 format.setXflag(operandIdentifiers.getXflag());
                 format.setBflag(displacementController.getBflag());
                 format.setPflag(displacementController.getPCflag());
@@ -130,11 +132,9 @@ void Pass2Controller::generateFinalFile(string start, string progName){
 }
 
 string Pass2Controller::getLength()  {
-    int counter = 0;
-    for (int i = 0; i < objectCodeArr.size(); i++) {
-        counter += objectCodeArr[i].length();
-    }
-    return converter.convertToHexa(counter/2);
+    int start = converter.convertToDecimal(startingAddress);
+    int finish = converter.convertToDecimal(endingAddress);
+    return converter.convertToHexa(finish - start);
 }
 
 string Pass2Controller::getByteObjectCode(string operand) {
