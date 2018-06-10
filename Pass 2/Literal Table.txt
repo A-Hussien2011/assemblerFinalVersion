@@ -1,0 +1,4 @@
+            LITERAL TABLE
+Name      Value     Length    Address   
+=c'eof'   656F66    3         000B      
+=w'12'    C         3         000E      

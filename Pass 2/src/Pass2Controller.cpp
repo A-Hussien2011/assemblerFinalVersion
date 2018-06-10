@@ -30,6 +30,7 @@ void Pass2Controller::generateObjectCode() {
     std::vector<std::string> input = file.readFile("pass1.txt");
     IntermediateLine currentLine = IntermediateLine (input[fileIterator]);
     IntermediateLine nextLine = IntermediateLine (input[fileIterator]);
+    cout << currentLine.getIntermediateLine();
     string start = currentLine.getAddress();
     string base = currentLine.getAddress();
     string progName = currentLine.getLabel();
@@ -37,11 +38,9 @@ void Pass2Controller::generateObjectCode() {
     displacementController = DisplacementController();
     int opType = OpValidator.getOperandType(currentLine.getOperand());
     operandIdentifiers.setOperand(currentLine.getOperand());
-    cout<<start << "  " << progName <<endl;
     while(fileIterator !=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
-        cout<<operand << "  " << operation <<endl;
         if (currentLine.getOperation() == "BYTE") {
             objectCodeArr.push_back(getByteObjectCode(operand));
         } else if (currentLine.getOperation() == "WORD") {
