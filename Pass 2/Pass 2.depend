@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1446667744 source:c:\users\personal\desktop\pass 2\main.cpp
+	<iostream>
+
+1528590573 source:c:\users\personal\desktop\pass 2\src\converters.cpp
+	"Converters.h"
+	<iostream>
+	<string.h>
+	<sstream>
+	<iomanip>
+
+1528590582 c:\users\personal\desktop\pass 2\include\converters.h
+	<iostream>
+
+1524965864 source:c:\users\personal\desktop\pass 2\src\directivetable.cpp
+	"DirectiveTable.h"
+	<iostream>
+	<algorithm>
+
+1524965862 c:\users\personal\desktop\pass 2\include\directivetable.h
+	<vector>
+	<string>
+	<algorithm>
+

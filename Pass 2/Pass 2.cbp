@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Pass 2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Pass 2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Pass 2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Converters.h" />
+		<Unit filename="include/DirectiveTable.h" />
+		<Unit filename="include/DisplacementController.h" />
+		<Unit filename="include/Format.h" />
+		<Unit filename="include/IntermediateLine.h" />
+		<Unit filename="include/LitTable.h" />
+		<Unit filename="include/OperandIdentifiers.h" />
+		<Unit filename="include/OperandSizeValidator.h" />
+		<Unit filename="include/OperandValidator.h" />
+		<Unit filename="include/OperationInfomation.h" />
+		<Unit filename="include/OperationTable.h" />
+		<Unit filename="include/Pass2Controller.h" />
+		<Unit filename="include/RegistersTable.h" />
+		<Unit filename="include/SymbolTable.h" />
+		<Unit filename="include/inOutFile.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Converters.cpp" />
+		<Unit filename="src/DirectiveTable.cpp" />
+		<Unit filename="src/DisplacementController.cpp" />
+		<Unit filename="src/Format.cpp" />
+		<Unit filename="src/IntermediateLine.cpp" />
+		<Unit filename="src/LitTable.cpp" />
+		<Unit filename="src/OperandIdentifiers.cpp" />
+		<Unit filename="src/OperandSizeValidator.cpp" />
+		<Unit filename="src/OperandValidator.cpp" />
+		<Unit filename="src/OperationTable.cpp" />
+		<Unit filename="src/Pass2Controller.cpp" />
+		<Unit filename="src/RegistersTable.cpp" />
+		<Unit filename="src/SymbolTable.cpp" />
+		<Unit filename="src/inOutFile.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

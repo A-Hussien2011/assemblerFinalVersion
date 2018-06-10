@@ -10,7 +10,7 @@
 
 DisplacementController::DisplacementController(OperandIdentifiers OperandIdent)
 {
-    operandIdentifiers = OperandIdent;
+    operandIdentifiers = OperandIdent();
     opTable = OperationTable();
     converter = Converters();
     validBase = true;
