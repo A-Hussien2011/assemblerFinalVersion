@@ -21,7 +21,7 @@ void DisplacementController::setDispalcement(string address, string operation, s
     } else if (type != NO_FORMAT){
         setEflag(false);
         if (type == FORMAT_3) {
-            displacement = calculateDisp(address, pc, base);
+            calculateDisp(address, pc, base);
             displacement = convertToBin(strtol(displacement.c_str(), NULL, 16));
         } else if (type == FORMAT_2) {
             string reg1 = "";
@@ -40,7 +40,7 @@ void DisplacementController::setDispalcement(string address, string operation, s
 
 }
 
-string DisplacementController::calculateDisp(string address, string pc, string base) {
+void DisplacementController::calculateDisp(string address, string pc, string base) {
     int intAddress = converter.convertToDecimal(address);
     int intPc = converter.convertToDecimal(pc);
     int result = intAddress - intPc;

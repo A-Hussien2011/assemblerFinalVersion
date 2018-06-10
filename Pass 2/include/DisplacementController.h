@@ -26,7 +26,7 @@ class DisplacementController
         void setPCflag(bool);
         void setBflag(bool);
         void setEflag(bool);
-        string calculateDisp(string, string, string);
+        void calculateDisp(string, string, string);
 
         bool PCflag;
         bool Bflag;
