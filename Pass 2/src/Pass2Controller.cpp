@@ -95,8 +95,14 @@ void Pass2Controller::generateObjectCode() {
 
                 displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
                                                    , nextLine.getAddress(), base, currentLine.getFormat());
-                format.setNflag(operandIdentifiers.getNflag());
-                format.setIflag(operandIdentifiers.getIflag());
+                if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
+                    format.setNflag(true);
+                    format.setIflag(true);
+                }else{
+                    format.setNflag(operandIdentifiers.getNflag());
+                    format.setIflag(operandIdentifiers.getIflag());
+                }
+
                 format.setXflag(operandIdentifiers.getXflag());
                 format.setBflag(displacementController.getBflag());
                 format.setPflag(displacementController.getPCflag());
