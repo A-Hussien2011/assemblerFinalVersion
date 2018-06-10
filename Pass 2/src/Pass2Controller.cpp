@@ -15,7 +15,6 @@ Pass2Controller::Pass2Controller() {
     controller = Controller();
     format = Format();
     converter = Converters();
-    string endStartingAddress;
     std::vector<std::string> objectCodeArr;
 }
 
@@ -56,7 +55,6 @@ void Pass2Controller::generateObjectCode() {
         string operation = currentLine.getOperation();
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
-            continue;
         }
         else{
             int opType = OpValidator.getOperandType(currentLine.getOperand());
@@ -103,13 +101,13 @@ void Pass2Controller::generateObjectCode() {
                 objectCodeArr.push_back(format.getObjectCode());
                 }
             }
-            fileIterator++;
-            currentLine.setIntermediateLine(nextLine.getIntermediateLine());
-            while(input[fileIterator].find(".") != std::string::npos){
-                fileIterator ++;
-            }
-            nextLine.setIntermediateLine(input[fileIterator]);
         }
+        fileIterator++;
+        currentLine.setIntermediateLine(nextLine.getIntermediateLine());
+        while(input[fileIterator].find(".") != std::string::npos){
+            fileIterator ++;
+        }
+        nextLine.setIntermediateLine(input[fileIterator]);
     }
 }
 
