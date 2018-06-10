@@ -57,6 +57,7 @@ void Controller :: start(string fileName)
     if (error == "") {
         errorMessage="";
     } else {
+        errorFound = true;
         errorMessage=error;
     }
     ///add while comment
@@ -121,6 +122,7 @@ void Controller :: start(string fileName)
         if(type != TYPE_COMMENT_ONLY){
 
             if (error != "") {
+                errorFound = true;
                 errorMessage = instruct.getError();
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
@@ -149,6 +151,7 @@ void Controller :: start(string fileName)
                     }
             } else if (!dirs.contains(operation)) {
                 errorMessage = "Opcode doesn't exist";
+                errorFound = true;
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
@@ -162,6 +165,7 @@ void Controller :: start(string fileName)
             if((operation == "NOBASE" || operation == "LTORG")
                 && type != TYPE_WITHOUT_LABEL_AND_OPERAND && type != TYPE_WITH_LABEL_WITHOUT_OPERAND){
                 errorMessage = operation + " found with label or operand";
+                errorFound = true;
                 operandVec.push_back(operand);
                 operationVec.push_back(operation);
                 labelVec.push_back(label);
@@ -177,6 +181,7 @@ void Controller :: start(string fileName)
                 operandType = opValid.getOperandType(operand);
                 if (operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
                     errorMessage = "operand is not valid";
+                    errorFound = true;
                     operandVec.push_back(operand);
                     operationVec.push_back(operation);
                     labelVec.push_back(label);
@@ -200,9 +205,11 @@ void Controller :: start(string fileName)
 
                 if(symTab.containSymbol(&label)){
                     errorMessage = "duplicated label in symbol table";
+                    errorFound = true;
                 } else{
                     if(opTable.contains(label) || dirs.contains(label)) {
                         errorMessage = "Label cannot be Mnemonic";
+                        errorFound = true;
                     } else {
                         char opType = evaluateType(operation, operand, operandType);
                         symTab.addSymbol(&label, locctr, opType);
@@ -226,6 +233,7 @@ void Controller :: start(string fileName)
                 if (operandType == TYPE_SYMBOL_OPERAND
                     && !symTab.containSymbol(&operand)) {
                         errorMessage = "error in operand";
+                        errorFound = true;
                 } else if (operandType == TYPE_SYMBOL_OPERAND
                     && symTab.containSymbol(&operand)){
                     locctr = symTab.getSymbolAddress(&operand);
@@ -238,10 +246,12 @@ void Controller :: start(string fileName)
                     || operandType == TYPE_SYMBOL_OPERAND)
                     && !symTab.containSymbol(&operand)) {
                         errorMessage = "label is not defined before EQU";
+                        errorFound = true;
                 } else if (operandType == TYPE_SIMPLE_EXPRESSION){
                     string symbolFromExp = getSymbol(operand);
                     if (!symTab.containSymbol(&symbolFromExp)) {
                         errorMessage = "label is not defined before EQU";
+                        errorFound = true;
                     }
                 }
             } else if (operation == "LTORG") {
@@ -292,11 +302,13 @@ void Controller :: start(string fileName)
 
     if(baseFound && !endBaseFound){
         errorMessage = "base not closed";
+        errorFound = true;
         errorMessageArr.push_back(errorMessage);
     }
     if (operation == "END") {
         if (baseFound && !baseFound) {
             errorMessage = "Base register is not identified";
+            errorFound = true;
             errorMessageArr.push_back(errorMessage);
         }
         if (type == TYPE_WITH_LABEL || type == TYPE_WITH_LABEL_WITHOUT_OPERAND) {
@@ -304,6 +316,7 @@ void Controller :: start(string fileName)
                 symTab.addSymbol(&label, locctr, false);
             } else {
                 errorMessage = "duplicate symbol";
+                errorFound = true;
                 errorMessageArr.push_back(errorMessage);
             }
         }
@@ -311,6 +324,7 @@ void Controller :: start(string fileName)
             int operandType = opValid.getOperandType(operand);
             if(operandType == -1 || !opValid.isCompatible(operandType, operation, operand)) {
               errorMessage = "operand is not valid";
+              errorFound = true;
               errorMessageArr.push_back(errorMessage);
             }
         }
@@ -322,6 +336,7 @@ void Controller :: start(string fileName)
     }
     if(!endFound){
         errorMessage = "End statement not found";
+        errorFound = true;
         operandVec.push_back(operand);
         operationVec.push_back(operation);
         labelVec.push_back(label);
@@ -421,3 +436,6 @@ LitTable Controller::getLitTable () {
     return litTab;
 }
 
+bool Controller::error(){
+    return errorFound;
+}

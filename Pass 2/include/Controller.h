@@ -40,6 +40,7 @@ class Controller
         LitTable litTab;
         LitTable getLitTable();
         SymbolTable getSymbolTable();
+        bool error();
 
     private:
         void toUpper(string*);
@@ -49,6 +50,7 @@ class Controller
         bool ltorgFound = false;
         bool endFound = false;
         char evaluateType(string, string, int);
+        bool errorFound = false;
 
 };
 

@@ -6,6 +6,8 @@
 #include <OperationTable.h>
 #include <DirectiveTable.h>
 #include "IntermediateLine.h"
+#include <iostream>
+
 
 
 IntermediateLine::IntermediateLine(string intermediateLine) {

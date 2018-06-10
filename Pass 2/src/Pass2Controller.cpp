@@ -18,8 +18,9 @@ Pass2Controller::Pass2Controller() {
     std::vector<std::string> objectCodeArr;
 }
 
-void Pass2Controller::generateIntermediateFile(string fileName) {
+bool Pass2Controller::generateIntermediateFile(string fileName) {
     controller.start(fileName);
+    return controller.error();
 }
 
 void Pass2Controller::generateObjectCode() {

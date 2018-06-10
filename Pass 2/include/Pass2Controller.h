@@ -16,7 +16,7 @@ class Pass2Controller
 {
     public:
         Pass2Controller();
-        void generateIntermediateFile(string);
+        bool generateIntermediateFile(string);
         void generateObjectCode();
         void generateFinalFile(string, string);
 
