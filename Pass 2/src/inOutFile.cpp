@@ -93,8 +93,8 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
     std::size_t counter = objectCode.size();
     string textStartAddress = startAddress;
     file << "H" + name + startAddress + length + "\n";
+    string temp = "";
     for (int i = 0; i < counter; i++) {
-        string temp = "";
         if(temp.length() + objectCode[i].length() <= 60){
             temp += objectCode[i];
         }
@@ -106,6 +106,14 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
             file << temp + "\n";
             temp = "";
         }
+    }
+    if (temp != "") {
+        textStartAddress = converter.convertToHexa((temp.length()/2) + strtol(textStartAddress.c_str(), NULL, 2));
+            file << "T";
+            //write in file start address of this line
+            file << converter.convertToHexa(temp.length()/2);
+            file << temp + "\n";
+            temp = "";
     }
     file << "E";
     file << startAddress;
