@@ -29,16 +29,17 @@ void Pass2Controller::generateObjectCode() {
     SymbolTable symbTab = controller.getSymbolTable();
     LitTable litTab = controller.getLitTable();
     std::vector<std::string> input = file.readFile("pass1.txt");
-    while(input[fileIterator].find(".") != std::string::npos){
+    while(fileIterator !=  input.size() && input[fileIterator].find(".") != std::string::npos){
         fileIterator ++;
     }
     IntermediateLine currentLine = IntermediateLine (input[fileIterator]);
     Format format = Format();
     fileIterator++;
-    while(input[fileIterator].find(".") != std::string::npos){
+    while(fileIterator !=  input.size() && input[fileIterator].find(".") != std::string::npos){
         fileIterator ++;
     }
     IntermediateLine nextLine = IntermediateLine (input[fileIterator]);
+
     string start = currentLine.getAddress();
     string base = currentLine.getAddress();
     string progName = currentLine.getLabel();
@@ -47,6 +48,9 @@ void Pass2Controller::generateObjectCode() {
 
 
     fileIterator++;
+    while(fileIterator !=  input.size() && input[fileIterator].find(".") != std::string::npos){
+        fileIterator ++;
+    }
     currentLine.setIntermediateLine(nextLine.getIntermediateLine());
     nextLine.setIntermediateLine(input[fileIterator]);
 
@@ -102,12 +106,16 @@ void Pass2Controller::generateObjectCode() {
                 }
             }
         }
+
         fileIterator++;
-        currentLine.setIntermediateLine(nextLine.getIntermediateLine());
-        while(input[fileIterator].find(".") != std::string::npos){
+        while(fileIterator !=  input.size() && input[fileIterator].find(".") != std::string::npos){
             fileIterator ++;
         }
-        nextLine.setIntermediateLine(input[fileIterator]);
+        currentLine.setIntermediateLine(nextLine.getIntermediateLine());
+
+        if (fileIterator !=  input.size()) {
+            nextLine.setIntermediateLine(input[fileIterator]);
+        }
     }
 }
 
