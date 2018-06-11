@@ -21,19 +21,13 @@ void IntermediateLine::parse(string intermediateLine) {
     regex intermediateLineRegex(REGEX_INTERMEDIATE_LINE);
     regex_search(intermediateLine.c_str(), matcher, intermediateLineRegex);
 
-    DirectiveTable *directiveTable = DirectiveTable::getInstance();
-    OperationTable *operationTable = OperationTable::getInstance();
-
     //Checks if contains a directive only
-    if (directiveTable->contains(matcher.str(4)) || !operationTable->contains(matcher.str(4))) {
-        setFormat(NO_FORMAT);
-        IntermediateLine::operation = matcher.str(4);
-    } else {
-        setOperation(matcher.str(4));
-    }
 
     setAddress(matcher.str(2));
     setLabel(matcher.str(3));
+    string operation = matcher.str(4);
+    int format = setOperation(operation);
+    setFormat(format);
     setOperand(matcher.str(5));
 
 }
@@ -50,24 +44,32 @@ const string &IntermediateLine::getOperation() const {
     return operation;
 }
 
-void IntermediateLine::setOperation(const string &operation) {
+int IntermediateLine::setOperation(const string &operation) {
     string operationReduced;
+    int format;
+
+    DirectiveTable *directiveTable = DirectiveTable::getInstance();
     OperationTable *operationTable = OperationTable::getInstance();
 
     int plusSignPosition = operation.find('+');
+
     if (plusSignPosition < 0) {
-        if (operationTable->getFormat(toUpper(operation)) == 3) {
-            setFormat(FORMAT_THREE);
+        if (directiveTable->contains(operation) || !operationTable->contains(operation)) {
+            format = NO_FORMAT;
+        } else if (operationTable->getFormat(toUpper(operation)) == 3) {
+            format = FORMAT_THREE;
         } else {
-            setFormat(FORMAT_TWO);
+            format = FORMAT_TWO;
         }
         operationReduced = operation;
     } else {
-        setFormat(FORMAT_FOUR);
+        format = FORMAT_FOUR;
         operationReduced = operation.substr(1, operation.length());
     }
 
     IntermediateLine::operation = operationReduced;
+
+    return format;
 }
 
 const string &IntermediateLine::getOperand() const {

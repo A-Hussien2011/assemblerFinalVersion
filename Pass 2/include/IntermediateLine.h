@@ -38,7 +38,7 @@ private:
     const string REGEX_LINE_NUMBER = "(\\d+){1}";
     const string REGEX_ADDRESS = "([0-9A-Fa-f]{4}){1}";
     const string REGEX_LABEL = "([a-zA-Z*][\\w]*){0,1}";
-    const string REGEX_OPERATION = "([+]{0,1}['a-zA-Z]{1,7}){1}";
+    const string REGEX_OPERATION = "([+=]{0,1}['a-zA-Z]{1,7}){1}";
     const string REGEX_OPERAND = "([=@#]{0,1}[\\w,+\\-*/%']*){0,1}";
 
     const string REGEX_INTERMEDIATE_LINE = "^\\s*" + REGEX_LINE_NUMBER +
@@ -58,7 +58,7 @@ private:
 
     void setAddress(const string &address);
 
-    void setOperation(const string &operation);
+    int setOperation(const string &operation);
 
     void setOperand(const string &operand);
 

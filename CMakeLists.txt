@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories("Pass 1")
 
-add_executable(pass_1
-        "Pass 1/main.cpp"
+add_executable(pass_2
+        #[["Pass 1/main.cpp"
         "Pass 1/include/OperationInfomation.h"
         "Pass 1/src/OperationTable.cpp"
         "Pass 1/include/OperationTable.h"
@@ -31,11 +31,12 @@ add_executable(pass_1
         "Pass 1/include/LitTable.h"
         "Pass 1/include/OperandSizeValidator.h"
         "Pass 1/include/OperandValidator.h"
-        "Pass 1/include/SymbolTable.h"
+        "Pass 1/include/SymbolTable.h"]]
         "Pass 2/include/IntermediateLine.h"
         "Pass 2/src/IntermediateLine.cpp"
         "Pass 2/include/DirectiveTable.h"
         "Pass 2/src/DirectiveTable.cpp"
         "Pass 2/include/OperationTable.h"
         "Pass 2/src/OperationTable.cpp"
+        "Pass 2/main.cpp"
         )
