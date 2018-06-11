@@ -55,65 +55,68 @@ void Pass2Controller::generateObjectCode() {
     currentLine.setIntermediateLine(nextLine.getIntermediateLine());
     nextLine.setIntermediateLine(input[fileIterator]);
 
-    while(fileIterator <=  input.size()) {
+    while(fileIterator <  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
         endingAddress = currentLine.getAddress();
-        if(operation.find("END") != std::string::npos){
-            endStartingAddress = operand;
-        }
-        else{
-            int opType = OpValidator.getOperandType(currentLine.getOperand());
-            if (currentLine.getOperation() == "BYTE") {
-                objectCodeArr.push_back(getByteObjectCode(operand));
-            } else if (currentLine.getOperation() == "WORD") {
-                objectCodeArr.push_back(getWordObjectCode(operand));
-            } else if (currentLine.getLabel() == "*") {
-                objectCodeArr.push_back(getLiteralObjectCode(operand, litTab));
-            }
-            else if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
-                     opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SIMPLE_EXPRESSION ||
-                     opType == TYPE_COMPLEX_EXPRESSION) && symbTab.getSymbolType(&operand) == 'U') {
-                            setSymbolType(operation, operand, opType, symbTab);
-                    if (symbTab.getSymbolType(&operand) == 'U') {
-                        cout<<"operand expression in undefined"<<endl;
-                    }
-            } else {
-                if (currentLine.getOperation() == "NOBASE") {
-                    displacementController.validBase = false;
-                } else if (currentLine.getOperation() == "BASE") {
-                    base = currentLine.getAddress();
-                }
 
-                operandIdentifiers.setOperand(currentLine.getOperand());
-                address = operandIdentifiers.getAddress();
-                if (address == "") {
-                    if (!operandIdentifiers.isValidExpression()) {
-                        cout<<"In valid expression"<<endl;
-                    } else {
-                        cout<<"Symbol not found"<<endl;
-                    }
+        int opType = OpValidator.getOperandType(currentLine.getOperand());
+        if (currentLine.getOperation() == "BYTE") {
+            objectCodeArr.push_back(getByteObjectCode(operand));
+        } else if (currentLine.getOperation() == "WORD") {
+            objectCodeArr.push_back(getWordObjectCode(operand));
+        } else if (currentLine.getLabel() == "*") {
+            objectCodeArr.push_back(getLiteralObjectCode(operand, litTab));
+        }
+        else if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
+                 opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SIMPLE_EXPRESSION ||
+                 opType == TYPE_COMPLEX_EXPRESSION) && symbTab.getSymbolType(&operand) == 'U') {
+                        setSymbolType(operation, operand, opType, symbTab);
+                if (symbTab.getSymbolType(&operand) == 'U') {
+                    cout<<"operand expression in undefined"<<endl;
+                }
+        } else {
+            if (currentLine.getOperation() == "NOBASE") {
+                displacementController.validBase = false;
+            } else if (currentLine.getOperation() == "BASE") {
+                base = currentLine.getAddress();
+            }
+
+            operandIdentifiers.setOperand(currentLine.getOperand());
+            address = operandIdentifiers.getAddress();
+            if (address == "") {
+                if (!operandIdentifiers.isValidExpression()) {
+                    cout<<"In valid expression"<<endl;
                 } else {
-
-                displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
-                                                   , nextLine.getAddress(), base, currentLine.getFormat());
-
-                if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
-                    format.setNflag(true);
-                    format.setIflag(true);
-                }else{
-                    format.setNflag(operandIdentifiers.getNflag());
-                    format.setIflag(operandIdentifiers.getIflag());
+                    cout<<"Symbol not found"<<endl;
                 }
-                format.setXflag(operandIdentifiers.getXflag());
-                format.setBflag(displacementController.getBflag());
-                format.setPflag(displacementController.getPCflag());
-                format.setFormatType(currentLine.getFormat());
-                format.setDispalcement(displacementController.getDispalcement());
-                objectCodeArr.push_back(format.getObjectCode());
-                }
+            } else {
+
+            displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
+                                               , nextLine.getAddress(), base, currentLine.getFormat());
+
+            if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
+                format.setNflag(true);
+                format.setIflag(true);
+            }else{
+                format.setNflag(operandIdentifiers.getNflag());
+                format.setIflag(operandIdentifiers.getIflag());
+            }
+            format.setXflag(operandIdentifiers.getXflag());
+            format.setBflag(displacementController.getBflag());
+            format.setPflag(displacementController.getPCflag());
+            format.setFormatType(currentLine.getFormat());
+            format.setDispalcement(displacementController.getDispalcement());
+        //set opcode of the format to get the right object code
+        //error the opcode is unsigned char and i need opcode string
+        //calculations of object code in format class depends on strings
+        //sample of the required
+        //format.setOperationCode(operationTable.getInfo(operation).opCode);
+            objectCodeArr.push_back(format.getObjectCode());
+            cout<<format.getObjectCode()<<endl;
             }
         }
+
 
         fileIterator++;
         while(fileIterator <  input.size() && input[fileIterator].find(".") != std::string::npos){
@@ -125,6 +128,7 @@ void Pass2Controller::generateObjectCode() {
             nextLine.setIntermediateLine(input[fileIterator]);
         }
     }
+    generateFinalFile(startingAddress, progName);
 }
 
 void Pass2Controller::generateFinalFile(string start, string progName){
