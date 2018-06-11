@@ -55,7 +55,7 @@ void Pass2Controller::generateObjectCode() {
     currentLine.setIntermediateLine(nextLine.getIntermediateLine());
     nextLine.setIntermediateLine(input[fileIterator]);
 
-    while(fileIterator <  input.size()) {
+    while(fileIterator <=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
         endingAddress = currentLine.getAddress();
@@ -95,6 +95,7 @@ void Pass2Controller::generateObjectCode() {
             displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
                                                , nextLine.getAddress(), base, currentLine.getFormat());
 
+
             if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
                 format.setNflag(true);
                 format.setIflag(true);
@@ -107,13 +108,14 @@ void Pass2Controller::generateObjectCode() {
             format.setPflag(displacementController.getPCflag());
             format.setFormatType(currentLine.getFormat());
             format.setDispalcement(displacementController.getDispalcement());
+            opInfo = operationTable.getInfo(currentLine.getOperation());
+            format.setOperationCode(opInfo.opCode);
         //set opcode of the format to get the right object code
         //error the opcode is unsigned char and i need opcode string
         //calculations of object code in format class depends on strings
         //sample of the required
         //format.setOperationCode(operationTable.getInfo(operation).opCode);
             objectCodeArr.push_back(format.getObjectCode());
-            cout<<format.getObjectCode()<<endl;
             }
         }
 

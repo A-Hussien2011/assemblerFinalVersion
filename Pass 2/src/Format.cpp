@@ -2,8 +2,9 @@
 #include <sstream>
 #include <bitset>
 #include <string>
+#include <iostream>
 
-bool n;
+bool nflag;
 bool i;
 bool x;
 bool b;
@@ -19,19 +20,19 @@ Format::Format()
 }
 
 void Format::setNflag(bool value){
-    b = value;
+    nflag = value;
 }
 void Format::setIflag(bool value){
-    b = value;
+    i = value;
 }
 void Format::setXflag(bool value){
-    b = value;
+    x = value;
 }
 void Format::setBflag(bool value){
     b = value;
 }
 void Format::setPflag(bool value){
-    b = value;
+    p = value;
 }
 
 void Format::setFormatType(int value){
@@ -62,7 +63,7 @@ string Format::getObjectCode(){
     else{
         string str = opCode.to_string();
         bincode = str.substr (0,6);
-        if(n == true){
+        if(nflag == true){
             bincode += "1";
         }else{
             bincode += "0";

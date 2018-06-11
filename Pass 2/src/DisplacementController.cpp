@@ -14,8 +14,8 @@ DisplacementController::DisplacementController() {
 void DisplacementController::setDispalcement(string address, string operation, string operand, string pc, string base, int type) {
     if (type == FORMAT_4) {
         setEflag(true);
-        setBflag(true);
-        setPCflag(true);
+        setBflag(false);
+        setPCflag(false);
         displacement = bitset<20>(strtol(address.c_str(), NULL, 16)).to_string();
     } else if (type != NO_FORMAT){
         setEflag(false);
