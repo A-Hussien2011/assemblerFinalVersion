@@ -1,6 +1,7 @@
-#include "DirectiveTable.h"
 #include <iostream>
 #include <algorithm>
+#include <include/DirectiveTable.h>
+
 /**
  * Singleton instance.
  */

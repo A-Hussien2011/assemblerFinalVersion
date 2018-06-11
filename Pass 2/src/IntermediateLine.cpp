@@ -3,11 +3,10 @@
 //
 
 #include <regex>
-#include <OperationTable.h>
-#include <DirectiveTable.h>
-#include "IntermediateLine.h"
 #include <iostream>
-
+#include "../include/IntermediateLine.h"
+#include "../include/DirectiveTable.h"
+#include "../include/OperationTable.h"
 
 
 IntermediateLine::IntermediateLine(string intermediateLine) {
@@ -27,13 +26,14 @@ void IntermediateLine::parse(string intermediateLine) {
     //Checks if contains a directive only
     if (directiveTable->contains(matcher.str(4))) {
         setFormat(NO_FORMAT);
-        setOperation(matcher.str(4));
-        setOperand(matcher.str(5));
+        IntermediateLine::operation = matcher.str(4);
     } else {
-        setAddress(matcher.str(2));
         setOperation(matcher.str(4));
-        setOperand(matcher.str(5));
     }
+
+    setAddress(matcher.str(2));
+    setLabel(matcher.str(3));
+    setOperand(matcher.str(5));
 
 }
 
@@ -94,12 +94,16 @@ void IntermediateLine::setIntermediateLine(const string &intermediateLine) {
     parse(intermediateLine);
 }
 
+const string &IntermediateLine::getLabel() const {
+    return label;
+}
+
+void IntermediateLine::setLabel(const string &label) {
+    IntermediateLine::label = label;
+}
+
 string IntermediateLine::toUpper(string str) {
     for (auto &c: str) c = static_cast<char>(toupper(c));
     return str;
-}
-
-const string &IntermediateLine::getLabel() const {
-    return label;
 }
 

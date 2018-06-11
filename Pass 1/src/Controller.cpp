@@ -12,6 +12,7 @@
 #include <locale>
 #include <sstream>
 #include <string>
+#include <include/Controller.h>
 
 #include "fstream"
 using namespace std;

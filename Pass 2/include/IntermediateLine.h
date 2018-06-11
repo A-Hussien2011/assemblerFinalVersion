@@ -35,11 +35,11 @@ public:
 
 private:
 
-    const string REGEX_LINE_NUMBER = "(\\d+)";
-    const string REGEX_ADDRESS = "([0-9A-Fa-f]{4})";
-    const string REGEX_LABEL = "([a-zA-Z][\\w]*)*";
-    const string REGEX_OPERATION = "([+]{0,1}[a-zA-Z]{1,5})";
-    const string REGEX_OPERAND = "([=@#]{0,1}[\\w,+\\-*/%']*)*";
+    const string REGEX_LINE_NUMBER = "(\\d+){1}";
+    const string REGEX_ADDRESS = "([0-9A-Fa-f]{4}){1}";
+    const string REGEX_LABEL = "([a-zA-Z][\\w]*){0,1}";
+    const string REGEX_OPERATION = "([+]{0,1}[a-zA-Z]{1,5}){1}";
+    const string REGEX_OPERAND = "([=@#]{0,1}[\\w,+\\-*/%']*){0,1}";
 
     const string REGEX_INTERMEDIATE_LINE = "^\\s*" + REGEX_LINE_NUMBER +
                                            "\\s+" + REGEX_ADDRESS +
@@ -54,7 +54,7 @@ private:
     int format;
     string intermediateLine;
 
-    void setLabel(const string &address);
+    void setLabel(const string &label);
 
     void setAddress(const string &address);
 
@@ -63,7 +63,6 @@ private:
     void setOperand(const string &operand);
 
     void setFormat(int format);
-
 
     void parse(string intermediateLine);
 
