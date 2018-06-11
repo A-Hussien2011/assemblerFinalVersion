@@ -22,9 +22,13 @@ void IntermediateLine::parse(string intermediateLine) {
     regex_search(intermediateLine.c_str(), matcher, intermediateLineRegex);
 
     DirectiveTable *directiveTable = DirectiveTable::getInstance();
+    OperationTable *operationTable = OperationTable::getInstance();
 
     //Checks if contains a directive only
     if (directiveTable->contains(matcher.str(4))) {
+        setFormat(NO_FORMAT);
+        IntermediateLine::operation = matcher.str(4);
+    } else if (!directiveTable->contains(matcher.str(4))) {
         setFormat(NO_FORMAT);
         IntermediateLine::operation = matcher.str(4);
     } else {
