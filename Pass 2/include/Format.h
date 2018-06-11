@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <bitset>
+#include <Converters.h>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ class Format
 
     private:
         string bin_to_hex(string);
+        Converters converter;
 };
 
 #endif // FORMAT_H

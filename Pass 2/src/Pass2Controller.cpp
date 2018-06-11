@@ -59,7 +59,9 @@ void Pass2Controller::generateObjectCode() {
     while(fileIterator <=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
-        endingAddress = currentLine.getAddress();
+        if(currentLine.getAddress() != ""){
+            endingAddress = currentLine.getAddress();
+        }
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
         }
@@ -119,6 +121,7 @@ void Pass2Controller::generateObjectCode() {
                     opInfo = operationTable.getInfo(currentLine.getOperation());
                 }
                 format.setOperationCode(opInfo.opCode);
+                cout << format.getObjectCode() <<endl;
                 objectCodeArr.push_back(format.getObjectCode());
                 }
             }

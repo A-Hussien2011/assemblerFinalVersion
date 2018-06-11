@@ -103,25 +103,26 @@ string Format::bin_to_hex(string val){
     string code = "";
     string tmp = "";
     int count = 0;
-    for(int i = val.length() - 1; i >= 0; i--){
+    for(int i = 0; i <= val.length(); i++){
         if(tmp.length() == 4){
             if(tmp == "0000") code += "0";
-            if(tmp == "0001") code += "1";
-            if(tmp == "0010") code += "2";
-            if(tmp == "0011") code += "3";
-            if(tmp == "0100") code += "4";
-            if(tmp == "0101") code += "5";
-            if(tmp == "0110") code += "6";
-            if(tmp == "0111") code += "7";
-            if(tmp == "1000") code += "8";
-            if(tmp == "1001") code += "9";
-            if(tmp == "1010") code += "A";
-            if(tmp == "1011") code += "B";
-            if(tmp == "1100") code += "C";
-            if(tmp == "1101") code += "D";
-            if(tmp == "1110") code += "E";
-            if(tmp == "1111") code += "F";
+            else if(tmp == "0001") code += "1";
+            else if(tmp == "0010") code += "2";
+            else if(tmp == "0011") code += "3";
+            else if(tmp == "0100") code += "4";
+            else if(tmp == "0101") code += "5";
+            else if(tmp == "0110") code += "6";
+            else if(tmp == "0111") code += "7";
+            else if(tmp == "1000") code += "8";
+            else if(tmp == "1001") code += "9";
+            else if(tmp == "1010") code += "A";
+            else if(tmp == "1011") code += "B";
+            else if(tmp == "1100") code += "C";
+            else if(tmp == "1101") code += "D";
+            else if(tmp == "1110") code += "E";
+            else if(tmp == "1111") code += "F";
             tmp = "";
+            if(i != val.length())i--;
         }else{
             tmp += val[i];
         }

@@ -93,7 +93,7 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
     file.open ("objectCode.txt");
     std::size_t counter = objectCode.size();
     string textStartAddress = startAddress;
-    file << "H^" + name + "^" +startAddress + "^" + length + "\n";
+    file << "H^" + name + "^" +startAddress.insert(0,"00") + "^" + length.insert(0,"00") + "\n";
     string temp = "";
     for (int i = 0; i < counter; i++) {
         if(temp.length() + objectCode[i].length() <= 60){
@@ -114,7 +114,7 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
             file << "T^";
             file << converter.convertToHexa(atoi(startAddress.c_str()) + size_line) << "^";
             size_line += temp.length()/2;
-            file << converter.convertToHexa(temp.length()/2) + "^";
+            file << converter.convertToHexa(temp.length()/2).substr(2,2) + "^";
             file << temp + "\n";
             temp = "";
     }
