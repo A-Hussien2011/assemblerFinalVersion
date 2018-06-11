@@ -1,5 +1,6 @@
 #include <iostream>
-#include "OperationTable.h"
+#include "../include/OperationTable.h"
+
 #define THREE 3
 #define ONE 1
 #define TWO 2

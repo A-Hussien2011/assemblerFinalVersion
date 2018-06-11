@@ -22,6 +22,7 @@ void IntermediateLine::parse(string intermediateLine) {
     regex_search(intermediateLine.c_str(), matcher, intermediateLineRegex);
 
     //Checks if contains a directive only
+
     setAddress(matcher.str(2));
     setLabel(matcher.str(3));
     string operation = matcher.str(4);
