@@ -75,11 +75,11 @@ void Pass2Controller::generateObjectCode() {
             else if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
                      opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SIMPLE_EXPRESSION ||
                      opType == TYPE_COMPLEX_EXPRESSION || opType == TYPE_SYMBOL_OPERAND) && symbTab.getSymbolType(&operand) == 'U') {
-                            setSymbolType(operation, operand, opType, symbTab);
-                    if (symbTab.getSymbolType(&operand) == 'U') {
-                        cout<<"operand expression in undefined"<<endl;
-                    }
-                    ///3'lt el goz2 dah
+                        setSymbolType(operation, operand, opType, symbTab);
+
+                        if (symbTab.getSymbolType(&operand) == 'U') {
+                            cout<<"operand expression in undefined"<<endl;
+                        }
             } else {
                 if (currentLine.getOperation() == "NOBASE") {
                     displacementController.validBase = false;
@@ -102,7 +102,7 @@ void Pass2Controller::generateObjectCode() {
                      currentLine.getFormat() == 4 || currentLine.getFormat() == 2)) {
                     displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
                                                    , nextLine.getAddress(), base, currentLine.getFormat());
-                } else {}
+                } else {
                     displacementController.setDirectDisplacement(bitset<12>(strtol(address.c_str(), NULL, 16)).to_string());
                 }
 
