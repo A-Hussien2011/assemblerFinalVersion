@@ -1,4 +1,4 @@
-#include "../include/DirectiveTable.h"
+#include "DirectiveTable.h"
 #include <iostream>
 #include <algorithm>
 /**

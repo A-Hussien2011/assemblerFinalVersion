@@ -19,6 +19,7 @@ class DisplacementController
         bool validBase;
         string convertToBin(int, int);
         int addBinary(string, string);
+        void setDirectDisplacement(string);
     private:
         RegistersTable registersTable;
         Converters converter;

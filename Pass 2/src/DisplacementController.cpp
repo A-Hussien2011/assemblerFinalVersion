@@ -151,3 +151,7 @@ bool DisplacementController::getPCflag(){
 bool DisplacementController::getBflag(){
     return Bflag;
 }
+
+void DisplacementController::setDirectDisplacement(string disp) {
+    displacement = disp;
+}

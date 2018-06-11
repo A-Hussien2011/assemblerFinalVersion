@@ -59,9 +59,7 @@ void Pass2Controller::generateObjectCode() {
     while(fileIterator <=  input.size()) {
         string operand = currentLine.getOperand();
         string operation = currentLine.getOperation();
-        if(currentLine.getAddress() != ""){
-            endingAddress = currentLine.getAddress();
-        }
+        endingAddress = currentLine.getAddress();
         if(operation.find("END") != std::string::npos){
             endStartingAddress = operand;
         }
@@ -72,15 +70,16 @@ void Pass2Controller::generateObjectCode() {
             } else if (currentLine.getOperation() == "WORD") {
                 objectCodeArr.push_back(getWordObjectCode(operand));
             } else if (currentLine.getLabel() == "*") {
-                objectCodeArr.push_back(getLiteralObjectCode(operand, litTab));
+                objectCodeArr.push_back(operand);
             }
             else if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
                      opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SIMPLE_EXPRESSION ||
-                     opType == TYPE_COMPLEX_EXPRESSION) && symbTab.getSymbolType(&operand) == 'U') {
+                     opType == TYPE_COMPLEX_EXPRESSION || opType == TYPE_SYMBOL_OPERAND) && symbTab.getSymbolType(&operand) == 'U') {
                             setSymbolType(operation, operand, opType, symbTab);
                     if (symbTab.getSymbolType(&operand) == 'U') {
                         cout<<"operand expression in undefined"<<endl;
                     }
+                    ///3'lt el goz2 dah
             } else {
                 if (currentLine.getOperation() == "NOBASE") {
                     displacementController.validBase = false;
@@ -97,8 +96,15 @@ void Pass2Controller::generateObjectCode() {
                         cout<<"Symbol not found"<<endl;
                     }
                 } else {
-                displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
+                if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
+                     opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SYMBOL_OPERAND ||
+                     opType == TYPE_SIMPLE_EXPRESSION || opType == TYPE_COMPLEX_EXPRESSION ||
+                     currentLine.getFormat() == 4 || currentLine.getFormat() == 2)) {
+                    displacementController.setDispalcement(address, currentLine.getOperation(), currentLine.getOperand()
                                                    , nextLine.getAddress(), base, currentLine.getFormat());
+                } else {}
+                    displacementController.setDirectDisplacement(bitset<12>(strtol(address.c_str(), NULL, 16)).to_string());
+                }
 
                 if(!operandIdentifiers.getNflag() && !operandIdentifiers.getIflag()){
                     format.setNflag(true);
@@ -112,16 +118,8 @@ void Pass2Controller::generateObjectCode() {
                 format.setPflag(displacementController.getPCflag());
                 format.setFormatType(currentLine.getFormat());
                 format.setDispalcement(displacementController.getDispalcement());
-                if (currentLine.getFormat() == 4) {
-                    string op = currentLine.getOperation();
-                    op = op.substr(1, op.length() - 1);
-                    cout<<op;
-                    opInfo = operationTable.getInfo(op);
-                } else {
-                    opInfo = operationTable.getInfo(currentLine.getOperation());
-                }
+                opInfo = operationTable.getInfo(currentLine.getOperation());
                 format.setOperationCode(opInfo.opCode);
-                cout << format.getObjectCode() <<endl;
                 objectCodeArr.push_back(format.getObjectCode());
                 }
             }
