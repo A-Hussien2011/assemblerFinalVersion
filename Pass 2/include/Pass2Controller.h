@@ -27,6 +27,7 @@ class Pass2Controller
         inOutFile file;
         Converters converter;
         OperandValidator OpValidator;
+        OperationTable operationTable;
         vector< string > objectCodeArr;
         string getLength();
         string getLiteralObjectCode(string, LitTable);

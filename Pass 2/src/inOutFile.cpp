@@ -87,12 +87,13 @@ void inOutFile::writeLitralFile(vector<string> name, vector<string> value,
 }
 
 void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, string length, string name){
+    int size_line = 0;
     ofstream file;
     converter = Converters();
     file.open ("objectCode.txt");
     std::size_t counter = objectCode.size();
     string textStartAddress = startAddress;
-    file << "H" + name + startAddress + length + "\n";
+    file << "H^" + name + "^" +startAddress + "^" + length + "\n";
     string temp = "";
     for (int i = 0; i < counter; i++) {
         if(temp.length() + objectCode[i].length() <= 60){
@@ -100,22 +101,24 @@ void inOutFile::writeHeaderFile(vector<string> objectCode, string startAddress, 
         }
         else {
             textStartAddress = converter.convertToHexa((temp.length()/2) + strtol(textStartAddress.c_str(), NULL, 2));
-            file << "T";
-            //write in file start address of this line
-            file << converter.convertToHexa(temp.length()/2);
-            file << temp + "\n";
+            file << "T^";
+            file << converter.convertToHexa(atoi(startAddress.c_str()) + size_line) << "^";
+            size_line += temp.length()/2;
+            file << converter.convertToHexa(temp.length()/2) + "^";
+            file << temp + "^" + "\n";
             temp = "";
         }
     }
     if (temp != "") {
         textStartAddress = converter.convertToHexa((temp.length()/2) + strtol(textStartAddress.c_str(), NULL, 2));
-            file << "T";
-            //write in file start address of this line
-            file << converter.convertToHexa(temp.length()/2);
+            file << "T^";
+            file << converter.convertToHexa(atoi(startAddress.c_str()) + size_line) << "^";
+            size_line += temp.length()/2;
+            file << converter.convertToHexa(temp.length()/2) + "^";
             file << temp + "\n";
             temp = "";
     }
-    file << "E";
+    file << "E^";
     file << startAddress;
     file.close();
 }
