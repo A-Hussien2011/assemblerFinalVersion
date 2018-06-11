@@ -25,10 +25,7 @@ void IntermediateLine::parse(string intermediateLine) {
     OperationTable *operationTable = OperationTable::getInstance();
 
     //Checks if contains a directive only
-    if (directiveTable->contains(matcher.str(4))) {
-        setFormat(NO_FORMAT);
-        IntermediateLine::operation = matcher.str(4);
-    } else if (!directiveTable->contains(matcher.str(4))) {
+    if (directiveTable->contains(matcher.str(4)) || !operationTable->contains(matcher.str(4))) {
         setFormat(NO_FORMAT);
         IntermediateLine::operation = matcher.str(4);
     } else {
