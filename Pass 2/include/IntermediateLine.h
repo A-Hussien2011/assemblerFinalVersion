@@ -40,12 +40,14 @@ private:
     const string REGEX_LABEL = "([a-zA-Z*][\\w]*){0,1}";
     const string REGEX_OPERATION = "([\\+=]{0,1}[a-zA-Z']{1,7}){1}";
     const string REGEX_OPERAND = "([=@#]{0,1}[\\w,+\\-*/%']*){0,1}";
+    const string REGEX_COMMENT = "(\\..*){0,1}";
 
     const string REGEX_INTERMEDIATE_LINE = "^\\s*" + REGEX_LINE_NUMBER +
                                            "\\s+" + REGEX_ADDRESS +
                                            "\\s+" + REGEX_LABEL +
                                            "\\s+" + REGEX_OPERATION +
-                                           "\\s+" + REGEX_OPERAND;
+                                           "\\s+" + REGEX_OPERAND +
+                                           "\\s*" + REGEX_COMMENT + "\\s*";
 
     string label;
     string address;
@@ -68,6 +70,7 @@ private:
 
     string toUpper(string str);
 
+    string trim(const string &str);
 };
 
 

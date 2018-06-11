@@ -17,17 +17,20 @@ IntermediateLine::IntermediateLine(string intermediateLine) {
 
 void IntermediateLine::parse(string intermediateLine) {
 
-    cmatch matcher;
+   /* cmatch matcher;
     regex intermediateLineRegex(REGEX_INTERMEDIATE_LINE);
-    regex_search(intermediateLine.c_str(), matcher, intermediateLineRegex);
+    regex_search(intermediateLine.c_str(), matcher, intermediateLineRegex);*/
 
-    //Checks if contains a directive only
-    setAddress(matcher.str(2));
-    setLabel(matcher.str(3));
-    string operation = matcher.str(4);
+
+    string address = trim(getIntermediateLine().substr(10,10));
+    setAddress(address);
+    string label = trim(getIntermediateLine().substr(20,10));
+    setLabel(label);
+    string operation = trim(getIntermediateLine().substr(30,15));
     int format = setOperation(operation);
     setFormat(format);
-    setOperand(matcher.str(5));
+    string operand = trim(getIntermediateLine().substr(45,10));
+    setOperand(operand);
 
 }
 
@@ -93,7 +96,7 @@ const string &IntermediateLine::getIntermediateLine() const {
 
 void IntermediateLine::setIntermediateLine(const string &intermediateLine) {
     IntermediateLine::intermediateLine = intermediateLine;
-    parse(intermediateLine);
+    parse(IntermediateLine::intermediateLine);
 }
 
 const string &IntermediateLine::getLabel() const {
@@ -109,3 +112,11 @@ string IntermediateLine::toUpper(string str) {
     return str;
 }
 
+string IntermediateLine::trim(const string &str) {
+    size_t first = str.find_first_not_of(' ');
+    if (string::npos == first) {
+        return str;
+    }
+    size_t last = str.find_last_not_of(' ');
+    return str.substr(first, (last - first + 1));
+}
