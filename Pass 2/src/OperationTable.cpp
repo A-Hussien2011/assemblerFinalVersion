@@ -7,6 +7,9 @@
 #define OPTIONAL 0
 #define MUST_EXIST 1
 #define NOT_EXIST -1
+#include <iostream>
+#include <string>
+using namespace std;
 
 OperationTable *OperationTable::instance = 0;
 OperationTable *OperationTable::getInstance() {
@@ -24,7 +27,7 @@ void OperationTable::initOpTable() {
 
     opName = "ADD";
     info = OperationInformation();
-    info.opCode = 0x18;
+    info.opCode = "18";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -33,7 +36,7 @@ void OperationTable::initOpTable() {
 
     opName = "ADDF";
     info = OperationInformation();
-    info.opCode = 0x58;
+    info.opCode = "58";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -42,7 +45,7 @@ void OperationTable::initOpTable() {
 
     opName = "ADDR";
     info = OperationInformation();
-    info.opCode = 0x90;
+    info.opCode = "90";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -50,7 +53,7 @@ void OperationTable::initOpTable() {
 
     opName = "SUB";
     info = OperationInformation();
-    info.opCode = 0x1C;
+    info.opCode = "1C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -59,7 +62,7 @@ void OperationTable::initOpTable() {
 
      opName = "SUBF";
     info = OperationInformation();
-    info.opCode = 0x5C;
+    info.opCode = "5C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -68,7 +71,7 @@ void OperationTable::initOpTable() {
 
      opName = "SUBR";
     info = OperationInformation();
-    info.opCode = 0x94;
+    info.opCode = "94";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -76,7 +79,7 @@ void OperationTable::initOpTable() {
 
     opName = "MUL";
     info = OperationInformation();
-    info.opCode = 0x20;
+    info.opCode = "20";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -85,7 +88,7 @@ void OperationTable::initOpTable() {
 
     opName = "MULF";
     info = OperationInformation();
-    info.opCode = 0x60;
+    info.opCode = "60";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -94,7 +97,7 @@ void OperationTable::initOpTable() {
 
     opName = "MULR";
     info = OperationInformation();
-    info.opCode = 0x98;
+    info.opCode = "98";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -102,7 +105,7 @@ void OperationTable::initOpTable() {
 
     opName = "DIV";
     info = OperationInformation();
-    info.opCode = 0x24;
+    info.opCode = "24";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -111,7 +114,7 @@ void OperationTable::initOpTable() {
 
     opName = "DIVF";
     info = OperationInformation();
-    info.opCode = 0x64;
+    info.opCode = "64";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -120,7 +123,7 @@ void OperationTable::initOpTable() {
 
     opName = "DIVR";
     info = OperationInformation();
-    info.opCode = 0x9C;
+    info.opCode = "9C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -128,7 +131,7 @@ void OperationTable::initOpTable() {
 
     opName = "AND";
     info = OperationInformation();
-    info.opCode = 0x40;
+    info.opCode = "40";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -137,7 +140,7 @@ void OperationTable::initOpTable() {
 
     opName = "OR";
     info = OperationInformation();
-    info.opCode = 0x44;
+    info.opCode = "44";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -146,7 +149,7 @@ void OperationTable::initOpTable() {
 
     opName = "COMP";
     info = OperationInformation();
-    info.opCode = 0x28;
+    info.opCode = "28";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -155,7 +158,7 @@ void OperationTable::initOpTable() {
 
     opName = "COMPF";
     info = OperationInformation();
-    info.opCode = 0x88;
+    info.opCode = "88";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -164,7 +167,7 @@ void OperationTable::initOpTable() {
 
     opName = "COMPR";
     info = OperationInformation();
-    info.opCode = 0xA0;
+    info.opCode = "A0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -172,7 +175,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDA";
     info = OperationInformation();
-    info.opCode = 0x00;
+    info.opCode = "00";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -181,7 +184,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDCH";
     info = OperationInformation();
-    info.opCode = 0x50;
+    info.opCode = "50";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -190,7 +193,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDB";
     info = OperationInformation();
-    info.opCode = 0x68;
+    info.opCode = "68";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -199,7 +202,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDF";
     info = OperationInformation();
-    info.opCode = 0x70;
+    info.opCode = "70";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -208,7 +211,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDS";
     info = OperationInformation();
-    info.opCode = 0x6C;
+    info.opCode = "6C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -217,7 +220,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDT";
     info = OperationInformation();
-    info.opCode = 0x74;
+    info.opCode = "74";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -226,7 +229,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDL";
     info = OperationInformation();
-    info.opCode = 0x08;
+    info.opCode = "08";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -235,7 +238,7 @@ void OperationTable::initOpTable() {
 
     opName = "LDX";
     info = OperationInformation();
-    info.opCode = 0x04;
+    info.opCode = "04";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -244,7 +247,7 @@ void OperationTable::initOpTable() {
 
     opName = "TD";
     info = OperationInformation();
-    info.opCode = 0xE0;
+    info.opCode = "E0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -253,7 +256,7 @@ void OperationTable::initOpTable() {
 
     opName = "RD";
     info = OperationInformation();
-    info.opCode = 0xD8;
+    info.opCode = "D8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -262,7 +265,7 @@ void OperationTable::initOpTable() {
 
     opName = "WD";
     info = OperationInformation();
-    info.opCode = 0xDC;
+    info.opCode = "DC";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -271,7 +274,7 @@ void OperationTable::initOpTable() {
 
     opName = "TIX";
     info = OperationInformation();
-    info.opCode = 0x2C;
+    info.opCode = "2C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -280,7 +283,7 @@ void OperationTable::initOpTable() {
 
     opName = "STA";
     info = OperationInformation();
-    info.opCode = 0x0C;
+    info.opCode = "0C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -289,7 +292,7 @@ void OperationTable::initOpTable() {
 
     opName = "STCH";
     info = OperationInformation();
-    info.opCode = 0x54;
+    info.opCode = "54";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -298,7 +301,7 @@ void OperationTable::initOpTable() {
 
     opName = "STL";
     info = OperationInformation();
-    info.opCode = 0x14;
+    info.opCode = "14";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -307,7 +310,7 @@ void OperationTable::initOpTable() {
 
     opName = "STX";
     info = OperationInformation();
-    info.opCode = 0x10;
+    info.opCode = "10";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -316,7 +319,7 @@ void OperationTable::initOpTable() {
 
     opName = "J";
     info = OperationInformation();
-    info.opCode = 0x3C;
+    info.opCode = "3C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -325,7 +328,7 @@ void OperationTable::initOpTable() {
 
     opName = "JEQ";
     info = OperationInformation();
-    info.opCode = 0x30;
+    info.opCode = "30";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -334,7 +337,7 @@ void OperationTable::initOpTable() {
 
     opName = "JGT";
     info = OperationInformation();
-    info.opCode = 0x34;
+    info.opCode = "34";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -343,7 +346,7 @@ void OperationTable::initOpTable() {
 
     opName = "JLT";
     info = OperationInformation();
-    info.opCode = 0x38;
+    info.opCode = "38";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -352,7 +355,7 @@ void OperationTable::initOpTable() {
 
     opName = "JSUB";
     info = OperationInformation();
-    info.opCode = 0x48;
+    info.opCode = "48";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -361,7 +364,7 @@ void OperationTable::initOpTable() {
 
     opName = "RSUB";
     info = OperationInformation();
-    info.opCode = 0x4C;
+    info.opCode = "4C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -369,7 +372,7 @@ void OperationTable::initOpTable() {
 
     opName = "TIXR";
     info = OperationInformation();
-    info.opCode = 0xB8;
+    info.opCode = "B8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -377,7 +380,7 @@ void OperationTable::initOpTable() {
 
     opName = "TIO";
     info = OperationInformation();
-    info.opCode = 0xF8;
+    info.opCode = "F8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -386,7 +389,7 @@ void OperationTable::initOpTable() {
 
     opName = "CLEAR";
     info = OperationInformation();
-    info.opCode = 0xB4;
+    info.opCode = "B4";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -394,7 +397,7 @@ void OperationTable::initOpTable() {
 
     opName = "SVC";
     info = OperationInformation();
-    info.opCode = 0xB0;
+    info.opCode = "B0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -402,7 +405,7 @@ void OperationTable::initOpTable() {
 
     opName = "FIX";
     info = OperationInformation();
-    info.opCode = 0xC4;
+    info.opCode = "C4";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -410,7 +413,7 @@ void OperationTable::initOpTable() {
 
     opName = "FLOAT";
     info = OperationInformation();
-    info.opCode = 0xC0;
+    info.opCode = "C0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -418,7 +421,7 @@ void OperationTable::initOpTable() {
 
     opName = "HIO";
     info = OperationInformation();
-    info.opCode = 0xF4;
+    info.opCode = "F4";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -426,7 +429,7 @@ void OperationTable::initOpTable() {
 
     opName = "LPS";
     info = OperationInformation();
-    info.opCode = 0xD0;
+    info.opCode = "D0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -435,7 +438,7 @@ void OperationTable::initOpTable() {
 
     opName = "NRMO";
     info = OperationInformation();
-    info.opCode = 0xC8;
+    info.opCode = "C8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -443,7 +446,7 @@ void OperationTable::initOpTable() {
 
     opName = "RMO";
     info = OperationInformation();
-    info.opCode = 0xAC;
+    info.opCode = "AC";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -451,7 +454,7 @@ void OperationTable::initOpTable() {
 
     opName = "SHIFTL";
     info = OperationInformation();
-    info.opCode = 0xA4;
+    info.opCode = "A4";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -459,7 +462,7 @@ void OperationTable::initOpTable() {
 
     opName = "SHIFTR";
     info = OperationInformation();
-    info.opCode = 0xA8;
+    info.opCode = "A8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(TWO);
     info.tybe = TWO;
@@ -467,7 +470,7 @@ void OperationTable::initOpTable() {
 
     opName = "SIO";
     info = OperationInformation();
-    info.opCode = 0xF0;
+    info.opCode = "F0";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(ONE);
     info.tybe = ONE;
@@ -475,7 +478,7 @@ void OperationTable::initOpTable() {
 
     opName = "SSK";
     info = OperationInformation();
-    info.opCode = 0xEC;
+    info.opCode = "EC";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -484,7 +487,7 @@ void OperationTable::initOpTable() {
 
     opName = "STB";
     info = OperationInformation();
-    info.opCode = 0x78;
+    info.opCode = "78";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -493,7 +496,7 @@ void OperationTable::initOpTable() {
 
     opName = "STCH";
     info = OperationInformation();
-    info.opCode = 0x54;
+    info.opCode = "54";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -502,7 +505,7 @@ void OperationTable::initOpTable() {
 
     opName = "STF";
     info = OperationInformation();
-    info.opCode = 0x80;
+    info.opCode = "80";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -511,7 +514,7 @@ void OperationTable::initOpTable() {
 
     opName = "STI";
     info = OperationInformation();
-    info.opCode = 0xD4;
+    info.opCode = "D4";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -520,7 +523,7 @@ void OperationTable::initOpTable() {
 
     opName = "STL";
     info = OperationInformation();
-    info.opCode = 0x14;
+    info.opCode = "14";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -529,7 +532,7 @@ void OperationTable::initOpTable() {
 
     opName = "STS";
     info = OperationInformation();
-    info.opCode = 0x7C;
+    info.opCode = "7C";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -538,7 +541,7 @@ void OperationTable::initOpTable() {
 
     opName = "STSW";
     info = OperationInformation();
-    info.opCode = 0xE8;
+    info.opCode = "E8";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -547,7 +550,7 @@ void OperationTable::initOpTable() {
 
     opName = "STT";
     info = OperationInformation();
-    info.opCode = 0x84;
+    info.opCode = "84";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -556,7 +559,7 @@ void OperationTable::initOpTable() {
 
     opName = "STX";
     info = OperationInformation();
-    info.opCode = 0x10;
+    info.opCode = "10";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);
@@ -565,7 +568,7 @@ void OperationTable::initOpTable() {
 
     opName = "ORG";
     info = OperationInformation();
-    info.opCode = 0x18;
+    info.opCode = "18";
     info.label = OPTIONAL;
     info.supportedFormats.push_back(THREE);
     info.supportedFormats.push_back(FOUR);

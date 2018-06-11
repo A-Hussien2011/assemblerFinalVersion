@@ -28,6 +28,7 @@ class Pass2Controller
         Converters converter;
         OperandValidator OpValidator;
         OperationTable operationTable;
+        OperationInformation opInfo;
         vector< string > objectCodeArr;
         string getLength();
         string getLiteralObjectCode(string, LitTable);

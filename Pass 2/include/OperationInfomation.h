@@ -2,6 +2,8 @@
 #define OPERATIONINFOMATION_H_INCLUDED
 
 #include <vector>
+#include <string>
+using namespace std;
 
 /**
  * A class containing some information about the instruction.
@@ -11,7 +13,7 @@ public:
     /**
      * The opCode of the instruction.
      */
-    unsigned char opCode;
+   string opCode;
     /**
      * An int representing the existence of label in
      * the instruction. -1 can't find 0 optional 1 must be found.
