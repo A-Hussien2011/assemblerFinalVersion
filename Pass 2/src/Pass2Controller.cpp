@@ -70,7 +70,7 @@ void Pass2Controller::generateObjectCode() {
             } else if (currentLine.getOperation() == "WORD") {
                 objectCodeArr.push_back(getWordObjectCode(operand));
             } else if (currentLine.getLabel() == "*") {
-                objectCodeArr.push_back(getLiteralObjectCode(operand, litTab));
+                objectCodeArr.push_back(operand);
             }
             else if ((opType == TYPE_IMMEDITAE_SYMBOL || opType == TYPE_INDIRECT_SYMBOL ||
                      opType == TYPE_INDEXED_SYMBOL || opType == TYPE_SIMPLE_EXPRESSION ||
@@ -113,7 +113,6 @@ void Pass2Controller::generateObjectCode() {
                 if (currentLine.getFormat() == 4) {
                     string op = currentLine.getOperation();
                     op = op.substr(1, op.length() - 1);
-                    cout<<op;
                     opInfo = operationTable.getInfo(op);
                 } else {
                     opInfo = operationTable.getInfo(currentLine.getOperation());
