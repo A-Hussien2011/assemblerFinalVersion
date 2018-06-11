@@ -150,7 +150,7 @@ string Pass2Controller::getWordObjectCode(string operand) {
     if (operand.at(0) == '-') {
         int word = strtol(operand.c_str(), NULL, 16);
         word *= -1;
-        code = converter.convertToHexa(displacementController.addBinary(displacementController.convertToBin(word), "1"));
+        code = converter.convertToHexa(displacementController.addBinary(displacementController.convertToBin(word,8), "1"));
     } else {
         code = converter.convertToHexa(strtol(operand.c_str(), NULL, 16));
     }

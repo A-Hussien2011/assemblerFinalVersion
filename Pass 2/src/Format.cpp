@@ -57,9 +57,6 @@ string Format::getObjectCode(){
     bitset<8> opCode(n);
     if(format == FORMAT_2){
         bincode += opCode.to_string();
-        while(displacement.length() != 8){
-            displacement.insert(0,"0");
-        }
         bincode += displacement;
     }
     else{
@@ -92,13 +89,7 @@ string Format::getObjectCode(){
         }
         if(format == FORMAT_4){
             bincode += "1";
-            while(displacement.length() != 20){
-                displacement.insert(0,"0");
-            }
         }else{
-            while(displacement.length() != 12){
-                displacement.insert(0,"0");
-            }
             bincode += "0";
         }
         bincode += displacement;
